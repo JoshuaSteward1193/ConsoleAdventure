@@ -9,11 +9,60 @@ namespace ConsoleAdventure
     class Tile
     {
         public Coordinate Coord { get; set; }
-        public char Icon { get; set; }
-        public ConsoleColor FColor { get; set; }
+        private char icon;
+        public char Icon
+        {
+            get
+            {
+                if (Resident == null)
+                {
+                    return icon;
+                }
+                else
+                {
+                    return Resident.Icon;
+                }
+            }
+            set
+            {
+                icon = value;
+            }
+        }
+        private ConsoleColor fColor;
+        public ConsoleColor FColor
+        {
+            get
+            {
+                if(Resident == null)
+                {
+                    return fColor;
+                }
+                else
+                {
+                    return Resident.Color;
+                }
+            }
+            set
+            {
+                fColor = value;
+            }
+        }
         public ConsoleColor BColor { get; set; }
         public bool Passable { get; set; }
         public string Type { get; set; }
+
+        private Character resident;
+        public Character Resident
+        {
+            get
+            {
+                return resident;
+            }
+            set
+            {
+                resident = value;
+            }
+        }
 
         public Tile(char ic, int yv, int xv)
         {
@@ -49,6 +98,18 @@ namespace ConsoleAdventure
                     break;  
                     
             }
+        }
+
+        public void MoveCharacterTo(Tile oldPos, Character character)
+        {
+            Resident = character;
+            oldPos.Resident = null;
+            character.Position = Coord;
+        }
+        public void SpawnCharacter(Character character)
+        {
+            Resident = character;
+            character.Position = Coord;
         }
     }
 }

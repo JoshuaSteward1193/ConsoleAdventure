@@ -13,7 +13,11 @@ namespace ConsoleAdventure
 
         public static void DataBuild()
         {
+            //
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
+
+
+
         }
         public static Tile[,] LoadTerrain(string textFile)
         {

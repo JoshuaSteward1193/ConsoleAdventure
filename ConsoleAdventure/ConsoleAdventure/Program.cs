@@ -11,55 +11,45 @@ namespace ConsoleAdventure
     {
         public static Random rand = new Random();
         public static Map currentMap;
-        public static int ColorTime;
-        public static int ColorLessTime;
-        public static int BadColorTime;
-        public static int BadColorLessTime;
+        public static int DrawTime;
+        public static Player p1;
+
+        //USER PREFERENCES
+        public static bool PrintColor = true;
+        public static bool DebugGame = true;
+
         static void Main(string[] args)
         {
             //INITIAL LOAD
             GameData.DataBuild();
             ChangeMap(GameData.AllMaps[0]);
+            p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
+                //Stopwatch for debug purposes
             Stopwatch sw = new Stopwatch();
+
+            GameData.AllMaps[0].TerrainData[GameData.AllMaps[0].SpawnPoints[0].YVal, GameData.AllMaps[0].SpawnPoints[0].XVal].SpawnCharacter(p1);
 
             //INTRO
             Console.WriteLine("Press anykey to begin");
-            Console.ReadKey();
-
-            sw.Start();
-            Console.WriteLine();
-            BadPrint(false);
-            sw.Stop();
-            BadColorLessTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-            sw.Reset();
-
-            sw.Start();
-            Console.WriteLine();            
-            PrintMap(false);
-            sw.Stop();
-            ColorLessTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-            sw.Reset();
-
-            sw.Start();
-            Console.WriteLine();
-            BadPrint(true);
-            sw.Stop();
-            BadColorTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-            sw.Reset();
-
-            sw.Start();
-            Console.WriteLine();
-            PrintMap(true);
-            sw.Stop();
-            ColorTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-
-            Console.WriteLine($"Printing map without StringBuilder or Color takes {BadColorLessTime} ms");
-            Console.WriteLine($"Printing map with StringBuilder but without color takes {ColorLessTime} ms.");
-            Console.WriteLine($"Printing map without StringBuilder but with color takes {BadColorTime} ms.");
-            Console.WriteLine($"Printing map with  StringBuilder and color takes {ColorTime} ms");
-            Console.ReadKey();
+            Console.ReadKey();             
 
             //TURN CYCLE
+            while(p1.Health > 0)
+            {
+                Console.Clear();
+                sw.Start();
+                PrintMap(true);
+                sw.Stop();
+                DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
+                sw.Reset();
+
+                if (DebugGame)
+                {
+                    Console.WriteLine($"Map Draw Time: {DrawTime} ms");
+                }
+                Console.ReadKey();
+            }
+            
         }
 
         private static void PrintMap(bool color)
