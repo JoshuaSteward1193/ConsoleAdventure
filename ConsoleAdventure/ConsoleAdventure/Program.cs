@@ -13,10 +13,16 @@ namespace ConsoleAdventure
         public static Map currentMap;
         public static int DrawTime;
         public static Player p1;
+        public static bool goodInput;
+        public static bool moveInput;
+
+
 
         //USER PREFERENCES
         public static bool PrintColor = true;
         public static bool DebugGame = true;
+        public static int YBuffer = 15; //Should be odd number
+        public static int XBuffer = 41; //Should be odd number
 
         static void Main(string[] args)
         {
@@ -24,85 +30,117 @@ namespace ConsoleAdventure
             GameData.DataBuild();
             ChangeMap(GameData.AllMaps[0]);
             p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
-                //Stopwatch for debug purposes
+            //Stopwatch for debug purposes
             Stopwatch sw = new Stopwatch();
 
             GameData.AllMaps[0].TerrainData[GameData.AllMaps[0].SpawnPoints[0].YVal, GameData.AllMaps[0].SpawnPoints[0].XVal].SpawnCharacter(p1);
+            Console.CursorVisible = false;
+
 
             //INTRO
             Console.WriteLine("Press anykey to begin");
-            Console.ReadKey();             
+            Console.ReadKey();
 
             //TURN CYCLE
-            while(p1.Health > 0)
+            while (p1.Health > 0)
             {
                 Console.Clear();
                 sw.Start();
-                PrintMap(true);
+                PrintMap(PrintColor);
                 sw.Stop();
                 DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-                sw.Reset();
+                sw.Reset();                
 
                 if (DebugGame)
                 {
                     Console.WriteLine($"Map Draw Time: {DrawTime} ms");
                 }
-                Console.ReadKey();
+
+                PlayerInput();
             }
-            
+
         }
 
         private static void PrintMap(bool color)
         {
-            int i = 0;
-            int j = 0;
-            StringBuilder sb = new StringBuilder();
             ConsoleColor targetColor = ConsoleColor.Black;
-            while (i < currentMap.TerrainData.GetLength(0))
+            StringBuilder sb = new StringBuilder();
+            int i;
+            int iOffset = 7;
+            int j;
+            int jOffset = 18;
+            if (p1.Position.YVal - 10 >= 0)
             {
-                j = 0;
-                sb.Clear();
-                while(j < currentMap.TerrainData.GetLength(1))
+                i = p1.Position.YVal - 10;
+                if (i >= currentMap.TerrainData.GetLength(0) - 20)
                 {
-                    char target = currentMap.TerrainData[i, j].Icon;                    
-                    if(sb.Length == 0)
+                    i = currentMap.TerrainData.GetLength(0) - 21;
+                }
+            }
+            else
+            {
+                i = 0;
+                iOffset -= (p1.Position.YVal - 10);
+            }
+            while (i < currentMap.TerrainData.GetLength(0) && i < p1.Position.YVal + iOffset)
+            {                
+                jOffset = 20;
+                if (p1.Position.XVal - 20 >= 0)
+                {
+                    j = p1.Position.XVal - 20;
+                    if (j >= currentMap.TerrainData.GetLength(1) - 40)
                     {
-                        sb.Append(target);
+                        j = currentMap.TerrainData.GetLength(1) - 41;
                     }
-                    else
+                }
+                else
+                {
+                    j = 0;
+                    jOffset -= (p1.Position.XVal - 20);
+                }
+                    sb.Clear();
+                    while (j < currentMap.TerrainData.GetLength(1) && j < p1.Position.XVal + jOffset)
                     {
-                        if (sb[sb.Length - 1] == target)
+                        char target = currentMap.TerrainData[i, j].Icon;
+                    if (targetColor != currentMap.TerrainData[i, j].FColor) targetColor = currentMap.TerrainData[i, j].FColor;
+                        if (sb.Length == 0)
                         {
                             sb.Append(target);
                         }
                         else
                         {
-                            Console.Write(sb);
-                            sb.Clear();
-                            sb.Append(target);
-                            if (targetColor != currentMap.TerrainData[i, j].FColor)
+                            if (sb[sb.Length - 1] == target)
                             {
-                                targetColor = currentMap.TerrainData[i, j].FColor;
+                                sb.Append(target);
+                            }
+                            else
+                            {
+                                Console.Write(sb);
+                                sb.Clear();
+                                sb.Append(target);
+                                if (targetColor != currentMap.TerrainData[i, j].FColor && color)
+                                {
+                                    targetColor = currentMap.TerrainData[i, j].FColor;
+                                }
                             }
                         }
-                    }
-                    
-                    if (color)
-                    {
-                        if(targetColor != Console.ForegroundColor)
-                        Console.ForegroundColor = currentMap.TerrainData[i, j].FColor;
-                    }
-                    
-                    //Console.Write(target);
+
+                        if (color)
+                        {
+                            if (targetColor != Console.ForegroundColor)
+                                Console.ForegroundColor = currentMap.TerrainData[i, j].FColor;
+                        }
                     j++;
                 }
                 Console.WriteLine(sb);
                 i++;
             }
             Console.ForegroundColor = ConsoleColor.Gray;
-        }
+        }          
+        
         private static void BadPrint(bool color)
         {
+            /*
             int i = 0;
             int j = 0;
             while (i < currentMap.TerrainData.GetLength(0))
@@ -122,10 +160,69 @@ namespace ConsoleAdventure
                 i++;
             }
             Console.ForegroundColor = ConsoleColor.Gray;
+            */
         }
+        
         private static void ChangeMap(Map x)
         {
             currentMap = x;
+        }        
+        
+        private static void PlayerInput()
+        {
+            moveInput = false;
+            while (!moveInput)
+            {
+                ConsoleKey UserInput = Console.ReadKey(false).Key;
+                if (UserInput == ConsoleKey.UpArrow || UserInput == ConsoleKey.DownArrow ||
+                    UserInput == ConsoleKey.LeftArrow || UserInput == ConsoleKey.RightArrow)
+                {
+                    PerformNavigation(UserInput);
+                }
+                else
+                {
+                    //Perform actions
+                }
+            }
+            
+        }
+        private static void PerformNavigation(ConsoleKey key)
+        {
+            int targetY = p1.Position.YVal;
+            int targetX = p1.Position.XVal;
+            string failure = "";
+            switch (key)
+            {
+                case ConsoleKey.UpArrow:
+                    targetY--;
+                    failure = "north";
+                    break;
+                case ConsoleKey.DownArrow:
+                    targetY++;
+                    failure = "south";
+                    break;
+                case ConsoleKey.LeftArrow:
+                    targetX--;
+                    failure = "west";
+                    break;
+                case ConsoleKey.RightArrow:
+                    targetX++;
+                    failure = "east";
+                    break;
+            }
+            if(currentMap.TerrainData[targetY, targetX].Passable)
+            {
+                currentMap.TerrainData[targetY, targetX].MoveCharacterTo(currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal], p1);
+                moveInput = true;
+            }
+            else
+            {
+                Console.WriteLine($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
+            }
+        }
+        private static void PerformActions()
+        {
+
         }
     }
 }

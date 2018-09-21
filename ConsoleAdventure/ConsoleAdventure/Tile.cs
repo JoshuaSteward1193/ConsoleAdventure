@@ -49,7 +49,7 @@ namespace ConsoleAdventure
         }
         public ConsoleColor BColor { get; set; }
         public bool Passable { get; set; }
-        public string Type { get; set; }
+        public string Terrain { get; set; }
 
         private Character resident;
         public Character Resident
@@ -72,27 +72,27 @@ namespace ConsoleAdventure
             switch (ic)
             {
                 case '@':
-                    Type = "Map Border";
+                    Terrain = "Map Border";
                     FColor = ConsoleColor.Magenta;                    
                     Passable = false;
                     break;
                 case ',':
-                    Type = "Grassy Plains";
+                    Terrain = "Grassy Plains";
                     FColor = ConsoleColor.Green;                    
                     Passable = true;                    
                     break;                
                 case 'X':
-                    Type = "Stone Wall";
+                    Terrain = "Stone Wall";
                     FColor = ConsoleColor.Gray;
                     Passable = false;
                     break;
                 case '=':
-                    Type = "Wooden Structure";
+                    Terrain = "Wooden Structure";
                     FColor = ConsoleColor.DarkYellow;
                     Passable = true;
                     break;
                 case '#':
-                    Type = "Forest";
+                    Terrain = "Forest";
                     FColor = ConsoleColor.DarkGreen;
                     Passable = true;
                     break;  
