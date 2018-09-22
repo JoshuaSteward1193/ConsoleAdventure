@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SpecialChars.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,6 +35,7 @@ namespace ConsoleAdventure
 
             GameData.AllMaps[0].TerrainData[GameData.AllMaps[0].SpawnPoints[0].YVal, GameData.AllMaps[0].SpawnPoints[0].XVal].SpawnCharacter(p1);
             Console.CursorVisible = false;
+            Console.OutputEncoding = Encoding.UTF8;            
 
 
             //INTRO
@@ -66,37 +67,37 @@ namespace ConsoleAdventure
             ConsoleColor targetColor = ConsoleColor.Black;
             StringBuilder sb = new StringBuilder();
             int i;
-            int iOffset = 7;
+            int iOffset = 9;
             int j;
-            int jOffset = 18;
-            if (p1.Position.YVal - 10 >= 0)
+            int jOffset = 22;
+            if (p1.Position.YVal - iOffset >= 0)
             {
-                i = p1.Position.YVal - 10;
-                if (i >= currentMap.TerrainData.GetLength(0) - 20)
+                i = p1.Position.YVal - iOffset;
+                if (i >= currentMap.TerrainData.GetLength(0) - iOffset * 2)
                 {
-                    i = currentMap.TerrainData.GetLength(0) - 21;
+                    i = currentMap.TerrainData.GetLength(0) - iOffset * 2;
                 }
             }
             else
             {
                 i = 0;
-                iOffset -= (p1.Position.YVal - 10);
+                iOffset -= (p1.Position.YVal - iOffset);
             }
             while (i < currentMap.TerrainData.GetLength(0) && i < p1.Position.YVal + iOffset)
-            {                
-                jOffset = 20;
-                if (p1.Position.XVal - 20 >= 0)
+            {
+                jOffset = 22;
+                if (p1.Position.XVal - jOffset >= 0)
                 {
-                    j = p1.Position.XVal - 20;
-                    if (j >= currentMap.TerrainData.GetLength(1) - 40)
+                    j = p1.Position.XVal - jOffset;
+                    if (j >= currentMap.TerrainData.GetLength(1) - jOffset * 2)
                     {
-                        j = currentMap.TerrainData.GetLength(1) - 41;
+                        j = currentMap.TerrainData.GetLength(1) - jOffset * 2;
                     }
                 }
                 else
                 {
                     j = 0;
-                    jOffset -= (p1.Position.XVal - 20);
+                    jOffset -= (p1.Position.XVal - jOffset);
                 }
                     sb.Clear();
                     while (j < currentMap.TerrainData.GetLength(1) && j < p1.Position.XVal + jOffset)

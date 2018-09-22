@@ -71,12 +71,19 @@ namespace ConsoleAdventure
             BColor = ConsoleColor.Black;
             switch (ic)
             {
+                case 'b':
+                    Icon = SpecialChars.Bush;
+                    Terrain = "Bush";
+                    FColor = ConsoleColor.DarkGreen;
+                    Passable = false;
+                    break;
                 case '@':
                     Terrain = "Map Border";
                     FColor = ConsoleColor.Magenta;                    
                     Passable = false;
                     break;
                 case ',':
+                    Icon = SpecialChars.MaybeGrass1;
                     Terrain = "Grassy Plains";
                     FColor = ConsoleColor.Green;                    
                     Passable = true;                    
@@ -91,7 +98,10 @@ namespace ConsoleAdventure
                     FColor = ConsoleColor.DarkYellow;
                     Passable = true;
                     break;
-                case '#':
+                case 'F':
+                    int i = Program.rand.Next(0, 3);
+                    Icon = SpecialChars.SmallTree1;
+                    if (i == 2) Icon = SpecialChars.BigTree1;
                     Terrain = "Forest";
                     FColor = ConsoleColor.DarkGreen;
                     Passable = true;
