@@ -14,14 +14,22 @@ namespace ConsoleAdventure
         {
             get
             {
-                if (Resident == null)
+                if (Thing == null)
                 {
-                    return icon;
+                    if (Resident == null)
+                    {
+                        return icon;
+                    }
+                    else
+                    {
+                        return Resident.Icon;
+                    }
                 }
                 else
                 {
-                    return Resident.Icon;
+                    return Thing.Icon;
                 }
+                
             }
             set
             {
@@ -33,14 +41,22 @@ namespace ConsoleAdventure
         {
             get
             {
-                if(Resident == null)
+                if(Thing == null)
                 {
-                    return fColor;
+                    if (Resident == null)
+                    {
+                        return fColor;
+                    }
+                    else
+                    {
+                        return Resident.Color;
+                    }
                 }
                 else
                 {
-                    return Resident.Color;
+                    return Thing.FColor;
                 }
+                
             }
             set
             {
@@ -48,7 +64,25 @@ namespace ConsoleAdventure
             }
         }
         public ConsoleColor BColor { get; set; }
-        public bool Passable { get; set; }
+        private bool passable;
+        public bool Passable
+        {
+            get
+            {
+                if(Thing == null)
+                {
+                    return passable;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                passable = value;
+            }
+        }
         public string Terrain { get; set; }
 
         private Character resident;
@@ -64,19 +98,16 @@ namespace ConsoleAdventure
             }
         }
 
+        private Interactable thing;
+        public Interactable Thing { get; set; }
+
         public Tile(char ic, int yv, int xv)
         {
             Icon = ic;
             Coord = new Coordinate(yv, xv);
             BColor = ConsoleColor.Black;
             switch (ic)
-            {
-                case 'b':
-                    Icon = SpecialChars.Bush;
-                    Terrain = "Bush";
-                    FColor = ConsoleColor.DarkGreen;
-                    Passable = false;
-                    break;
+            {                
                 case '@':
                     Terrain = "Map Border";
                     FColor = ConsoleColor.Magenta;                    
@@ -105,7 +136,17 @@ namespace ConsoleAdventure
                     Terrain = "Forest";
                     FColor = ConsoleColor.DarkGreen;
                     Passable = true;
-                    break;  
+                    break;
+                case ':':
+                    Terrain = "Gravel Path";
+                    FColor = ConsoleColor.DarkGray;
+                    Passable = true;
+                    break;
+                case '~':
+                    Terrain = "Body of Water";
+                    FColor = ConsoleColor.DarkCyan;
+                    Passable = false;
+                    break;
                     
             }
         }

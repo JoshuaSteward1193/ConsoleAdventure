@@ -7,3 +7,7 @@ C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdvent
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csproj.CoreCompileInputs.cache
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.pdb
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.application
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.application

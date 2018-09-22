@@ -13,10 +13,14 @@ namespace ConsoleAdventure
 
         public static void DataBuild()
         {
-            //
+            //LOAD MAPS
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
 
-
+            //ADD OBJECTS
+            AllMaps[0].TerrainData[8, 13].Thing = new Interactable("Old Stump", "the remains of an ancient tree",
+                'o', -1, 0, 0, ConsoleColor.DarkYellow);
+            AllMaps[0].TerrainData[20, 50].Thing = new Interactable("Ancient Grave", "the place where someone great " +
+                "was buried in ages past", SpecialChars.Cross, -1, 0, 0, ConsoleColor.DarkGray);
 
         }
         public static Tile[,] LoadTerrain(string textFile)
