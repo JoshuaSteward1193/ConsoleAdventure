@@ -15,5 +15,9 @@ namespace ConsoleAdventure
         public static char Bush = '\u0239';
         public static char BigCrop1 = '\u03EA';
         public static char SmallCrop1 = '\u03EB';
+        public static char SolidMaterial = '\u2591';
+        public static char MushroomRing = '\u0488';
+        public static char LadderUp = '\u0482';
+        public static char CaveEntrance = '\u04e8';
     }
 }

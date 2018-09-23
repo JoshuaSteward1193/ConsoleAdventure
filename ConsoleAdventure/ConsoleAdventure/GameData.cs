@@ -10,17 +10,57 @@ namespace ConsoleAdventure
     class GameData
     {
         public static List<Map> AllMaps = new List<Map>();
+        public static List<Transition> Transitions = new List<Transition>();
 
         public static void DataBuild()
         {
             //LOAD MAPS
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
+            AllMaps.Add(new Map("Goblin Lair", LoadTerrain("GoblinLair1"), new Coordinate(3, 8)));
+
+            //CREATE TRANSITIONS
+            Transitions.Add(new Transition(4000, new string[]
+            {
+                "You cautiously approach the entrance to the tunnel",
+                "The dank, moldy air wafts across your face from below",
+                "From the depths, you hear a distant screech",
+                "Steeling yourself, you duck your head and enter the cave",
+                "The air is cold and clammy as you descend on slime-covered steps",
+                "The light from above grows weaker as the descending stairs run deeper",
+                "You see the glow of torchlight from somewhere far below you",
+                "The screech sounds louder, but still somewhat distant",
+                "Then the stairs give way to a landing, with a ladder leading further below",
+                "You grasp the ladder and descend once again",
+                "You find yourself in a small room, carved out of the bedrock",
+                "You hear the screech again, and know it is close"
+            }));
+            Transitions.Add(new Transition(4000, new string[]
+            {
+                "Unable to bear the foul air",
+                "dim lighting",
+                "and oppressive weight of the earth above you any longer",
+                "You scramble back up the wooden ladder",
+                "You arrive on the stone landing, and hurry upwards",
+                "As fast as the slimy stone stairs allow",
+                "On the verge of panic, you continue upwards faster",
+                "It seems as if you should have arrived at the surface long ago",
+                "Panting hard, you fight back the panic and press it down inside",
+                "Struggling aginst the magnetic pull of the depths below, you finally glimpse a light",
+                "A few more stairs, and you can make out the bright sunshine streaming into the cave",
+                "As you cross the threshold and re-enter the sun's bright light",
+                "You hear a distant screech echoing up the tunnel behind you"
+            }));
 
             //ADD OBJECTS
-            AllMaps[0].TerrainData[8, 13].Thing = new Interactable("Old Stump", "the remains of an ancient tree",
+            AllMaps[0].TerrainData[8, 13].Thing = new Interactable("Old Stump", "It is the remains of an ancient tree",
                 'o', -1, 0, 0, ConsoleColor.DarkYellow);
-            AllMaps[0].TerrainData[20, 50].Thing = new Interactable("Ancient Grave", "the place where someone great " +
+            AllMaps[0].TerrainData[20, 50].Thing = new Interactable("Ancient Grave", "This is the place where someone great " +
                 "was buried in ages past", SpecialChars.Cross, -1, 0, 0, ConsoleColor.DarkGray);
+            AllMaps[0].TerrainData[21, 50].Thing = new Portal("Dark Cave", "This cave leads down into the darkness.",
+                Transitions[0], AllMaps[1], AllMaps[1].SpawnPoints[0], SpecialChars.CaveEntrance, ConsoleColor.Gray);
+            AllMaps[1].TerrainData[AllMaps[1].SpawnPoints[0].YVal, AllMaps[1].SpawnPoints[0].XVal].Thing = new Portal
+                ("Wooden Ladder", "It leads back to the surface", Transitions[1], AllMaps[0], new Coordinate(21, 50), SpecialChars.LadderUp,
+                ConsoleColor.DarkYellow);
 
         }
         public static Tile[,] LoadTerrain(string textFile)
@@ -34,6 +74,9 @@ namespace ConsoleAdventure
             {
                 case "TestRoom1":
                     currentText = Properties.Resources.TestRoom1;
+                    break;
+                case "GoblinLair1":
+                    currentText = Properties.Resources.GoblinLair1;
                     break;
                 default:
                     currentText = Properties.Resources.TestRoom1;

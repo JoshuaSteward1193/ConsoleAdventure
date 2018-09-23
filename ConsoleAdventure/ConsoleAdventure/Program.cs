@@ -28,7 +28,7 @@ namespace ConsoleAdventure
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
-			ChangeMap(GameData.AllMaps[0]);
+			currentMap = GameData.AllMaps[0];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
 			//Stopwatch for debug purposes
 			Stopwatch sw = new Stopwatch();
@@ -169,9 +169,11 @@ namespace ConsoleAdventure
 			*/
 		}
 		
-		private static void ChangeMap(Map x)
+		public static void ChangeMap(Map x, Coordinate spawn)
 		{
-			currentMap = x;
+            x.TerrainData[spawn.YVal, spawn.XVal].MoveCharacterTo(currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal], p1);
+            currentMap = x;
+            PrintMap(PrintColor);
 		}        
 		
 		private static void PlayerInput()
@@ -226,7 +228,7 @@ namespace ConsoleAdventure
                 if(currentMap.TerrainData[targetY, targetX].Thing != null)
                 {
                     Console.WriteLine($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
-                        $"It is {currentMap.TerrainData[targetY, targetX].Thing.Description}.");
+                        $"{currentMap.TerrainData[targetY, targetX].Thing.Description}.");
                     currentMap.TerrainData[targetY, targetX].Thing.Interact();
                 }
                 else

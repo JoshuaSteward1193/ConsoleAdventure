@@ -28,14 +28,14 @@ namespace ConsoleAdventure
             Charges = charge;
         }
 
-        public void Maintainance()
+        public virtual void Maintainance()
         {
             switch (MaintainanceID)
             {
 
             }
         }
-        public void Interact()
+        public virtual void Interact()
         {
             switch (InteractionID)
             {

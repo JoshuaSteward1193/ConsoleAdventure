@@ -14,20 +14,20 @@ namespace ConsoleAdventure
         {
             get
             {
-                if (Thing == null)
+                if (Resident == null)
                 {
-                    if (Resident == null)
+                    if (Thing == null)
                     {
                         return icon;
                     }
                     else
                     {
-                        return Resident.Icon;
+                        return Thing.Icon;
                     }
                 }
                 else
                 {
-                    return Thing.Icon;
+                    return Resident.Icon;
                 }
                 
             }
@@ -41,20 +41,20 @@ namespace ConsoleAdventure
         {
             get
             {
-                if(Thing == null)
+                if(Resident == null)
                 {
-                    if (Resident == null)
+                    if (Thing == null)
                     {
                         return fColor;
                     }
                     else
                     {
-                        return Resident.Color;
+                        return Thing.FColor;
                     }
                 }
                 else
                 {
-                    return Thing.FColor;
+                    return Resident.Color;
                 }
                 
             }
@@ -146,6 +146,17 @@ namespace ConsoleAdventure
                     Terrain = "Body of Water";
                     FColor = ConsoleColor.DarkCyan;
                     Passable = false;
+                    break;
+                case '/':
+                    Icon = SpecialChars.SolidMaterial;
+                    Terrain = "Rock Wall";
+                    FColor = ConsoleColor.DarkGray;
+                    Passable = false;
+                    break;
+                case '+':
+                    Terrain = "Stone Structure";
+                    FColor = ConsoleColor.White;
+                    Passable = true;
                     break;
                     
             }
