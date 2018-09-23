@@ -59,8 +59,11 @@ namespace ConsoleAdventure
 				{
 					Console.WriteLine($"Map Draw Time: {DrawTime} ms");
 				}
-
-				PlayerInput();
+                while (Console.KeyAvailable)
+                {
+                    Console.ReadKey(false);
+                }
+                PlayerInput();
 			}
 
 		}
@@ -179,10 +182,16 @@ namespace ConsoleAdventure
 		private static void PlayerInput()
 		{
 			moveInput = false;
-			while (!moveInput)
-			{
-				ConsoleKey UserInput = Console.ReadKey(false).Key;
-				if (UserInput == ConsoleKey.UpArrow || UserInput == ConsoleKey.DownArrow ||
+            
+            while (!moveInput)
+            {
+                ConsoleKey UserInput = ConsoleKey.X;
+                if (Console.KeyAvailable)
+                {
+                    UserInput = Console.ReadKey(false).Key;
+                }
+                
+                if (UserInput == ConsoleKey.UpArrow || UserInput == ConsoleKey.DownArrow ||
 					UserInput == ConsoleKey.LeftArrow || UserInput == ConsoleKey.RightArrow)
 				{
 					PerformNavigation(UserInput);
