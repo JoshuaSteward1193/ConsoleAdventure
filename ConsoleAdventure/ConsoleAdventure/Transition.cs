@@ -24,12 +24,15 @@ namespace ConsoleAdventure
             foreach (string x in Lines)
             {
                 Console.WriteLine(x);
-                Console.WriteLine();
-                Console.WriteLine();
+                Console.WriteLine();                
                 System.Threading.Thread.Sleep(DelayTime);
             }
             System.Threading.Thread.Sleep(DelayTime * 2);
             Console.Clear();
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(false);
+            }
         }
     }
 }

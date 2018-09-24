@@ -23,8 +23,10 @@ namespace ConsoleAdventure
 		public static bool DebugGame = true;
 		public static int YBuffer = 11; //Should be odd number
 		public static int XBuffer = 21; //Should be odd number
+        public static string SideBuffer = "                       ";
 
-		static void Main(string[] args)
+
+        static void Main(string[] args)
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
@@ -36,6 +38,8 @@ namespace ConsoleAdventure
 			GameData.AllMaps[0].TerrainData[GameData.AllMaps[0].SpawnPoints[0].YVal, GameData.AllMaps[0].SpawnPoints[0].XVal].SpawnCharacter(p1);
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
+            Console.WindowWidth = 91;
+            
 
 
             //INTRO
@@ -50,6 +54,7 @@ namespace ConsoleAdventure
 			{
 				Console.Clear();
 				sw.Start();
+                PrintHeader();
 				PrintMap(PrintColor);
 				sw.Stop();
 				DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
@@ -57,6 +62,7 @@ namespace ConsoleAdventure
 
 				if (DebugGame)
 				{
+                    Console.Write(SideBuffer);
 					Console.WriteLine($"Map Draw Time: {DrawTime} ms");
 				}
                 while (Console.KeyAvailable)
@@ -105,6 +111,7 @@ namespace ConsoleAdventure
 					j = 0;
 					jOffset -= (p1.Position.XVal - jOffset);
 				}
+                Console.Write(SideBuffer);
 				sb.Clear();
 				while (j < currentMap.TerrainData.GetLength(1) && j < p1.Position.XVal + jOffset)
 				{
@@ -171,6 +178,14 @@ namespace ConsoleAdventure
 			Console.ForegroundColor = ConsoleColor.Gray;
 			*/
 		}
+
+        private static void PrintHeader()
+        {
+            Console.WriteLine();
+            Console.Write(SideBuffer);
+            Console.WriteLine($"Player: {p1.Name} | Health: {p1.Health} | Location: {currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal].Terrain}");
+            Console.WriteLine();
+        }
 		
 		public static void ChangeMap(Map x, Coordinate spawn)
 		{
