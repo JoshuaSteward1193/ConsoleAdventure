@@ -75,6 +75,7 @@
     <Compile Include="GameData.cs" />
     <Compile Include="Interactable.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />
     <Compile Include="Program.cs" />
