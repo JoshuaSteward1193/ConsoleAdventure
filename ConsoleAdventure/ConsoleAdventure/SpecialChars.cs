@@ -20,5 +20,7 @@ namespace ConsoleAdventure
         public static char LadderUp = '\u0482';
         public static char CaveEntrance = '\u04e8';
         public static char Diamond = '\u25ca';
+        public static char HatManRight = '\u1e50';
+        public static char HatManLeft = '\u1e52';
     }
 }

@@ -8,8 +8,10 @@ namespace ConsoleAdventure
 {
     class Player : Character
     {
-        public Player(string name, char ico, ConsoleColor col, int hp) : base(name, ico, col, hp)
+        private bool isAI;
+        public Player(string name, char ico, ConsoleColor col, int hp) : base(name, ico, col, hp, null)
         {
+            
         }
     }
 }

@@ -64,6 +64,9 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[10, 5].Thing = new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
                 "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red);
 
+            //ADD CHARACTERS
+            AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, ConsoleColor.Yellow, 50, AllMaps[0]));
+
         }
         public static Tile[,] LoadTerrain(string textFile)
         {

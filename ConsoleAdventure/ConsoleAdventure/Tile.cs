@@ -71,7 +71,14 @@ namespace ConsoleAdventure
             {
                 if(Thing == null)
                 {
-                    return passable;
+                    if(Resident == null)
+                    {
+                        return passable;
+                    }
+                    else
+                    {
+                        return false;
+                    }                    
                 }
                 else
                 {

@@ -54,6 +54,7 @@ namespace ConsoleAdventure
 			{
 				Console.Clear();
 				sw.Start();
+                CharacterAI();
                 PrintHeader();
 				PrintMap(PrintColor);
 				sw.Stop();
@@ -69,7 +70,9 @@ namespace ConsoleAdventure
                 {
                     Console.ReadKey(false);
                 }
+                
                 PlayerInput();
+
 			}
 
 		}
@@ -255,13 +258,30 @@ namespace ConsoleAdventure
                         $"{currentMap.TerrainData[targetY, targetX].Thing.Description}.");
                     currentMap.TerrainData[targetY, targetX].Thing.Interact();
                 }
+                else if(currentMap.TerrainData[targetY, targetX].Resident != null)
+                {
+                    if(currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(NPC)){
+                        Console.WriteLine($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
+                    }
+                }
                 else
                 {
+                    
                     Console.WriteLine($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
                 }
 				
 			}
 		}
+        private static void CharacterAI()
+        {
+            if(currentMap.AICharacters.Count > 0)
+            {
+                foreach(Character c in currentMap.AICharacters)
+                {
+                    c.Wander();
+                }
+            }
+        }
 		private static void PerformActions()
 		{
 
