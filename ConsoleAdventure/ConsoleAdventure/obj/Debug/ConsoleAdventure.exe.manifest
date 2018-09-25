@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConsoleAdventure.exe" size="30696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConsoleAdventure.exe" size="31720">
       <assemblyIdentity name="ConsoleAdventure" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yK/ABsuR/GCK17hg9vMGTor+ze+3Y4ATzbXVQannwgI=</dsig:DigestValue>
+        <dsig:DigestValue>JLbBykHSBVK4N5exyPVDZzQIj5f2e0hEyCZjUEgCpWg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -19,5 +19,6 @@ namespace ConsoleAdventure
         public static char MushroomRing = '\u0488';
         public static char LadderUp = '\u0482';
         public static char CaveEntrance = '\u04e8';
+        public static char Diamond = '\u25ca';
     }
 }

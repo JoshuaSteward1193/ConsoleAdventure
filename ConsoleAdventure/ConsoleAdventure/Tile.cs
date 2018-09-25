@@ -99,7 +99,22 @@ namespace ConsoleAdventure
         }
 
         private Interactable thing;
-        public Interactable Thing { get; set; }
+        public Interactable Thing
+        {
+            get
+            {
+                return thing;
+            }
+            set
+            {
+                thing = value;
+                if(thing != null)
+                {
+                    thing.SetPos(Coord.YVal, Coord.XVal);
+                }
+                
+            }
+        }
 
         public Tile(char ic, int yv, int xv)
         {
@@ -155,7 +170,7 @@ namespace ConsoleAdventure
                     break;
                 case '+':
                     Terrain = "Stone Structure";
-                    FColor = ConsoleColor.White;
+                    FColor = ConsoleColor.Gray;
                     Passable = true;
                     break;
                     
@@ -172,6 +187,10 @@ namespace ConsoleAdventure
         {
             Resident = character;
             character.Position = Coord;
+        }
+        public void DestroyThing()
+        {
+            Thing = null;
         }
     }
 }

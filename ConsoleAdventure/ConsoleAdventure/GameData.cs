@@ -19,7 +19,7 @@ namespace ConsoleAdventure
             AllMaps.Add(new Map("Goblin Lair", LoadTerrain("GoblinLair1"), new Coordinate(3, 8)));
 
             //CREATE TRANSITIONS
-            Transitions.Add(new Transition(4000, new string[]
+            Transitions.Add(new Transition(3000, new string[]
             {
                 "You cautiously approach the entrance to the tunnel",
                 "The dank, moldy air wafts across your face from below",
@@ -34,7 +34,7 @@ namespace ConsoleAdventure
                 "You find yourself in a small room, carved out of the bedrock",
                 "You hear the screech again, and know it is close"
             }));
-            Transitions.Add(new Transition(4000, new string[]
+            Transitions.Add(new Transition(3000, new string[]
             {
                 "Unable to bear the foul air",
                 "dim lighting",
@@ -61,6 +61,8 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[AllMaps[1].SpawnPoints[0].YVal, AllMaps[1].SpawnPoints[0].XVal].Thing = new Portal
                 ("Wooden Ladder", "It leads back to the surface", Transitions[1], AllMaps[0], new Coordinate(21, 50), SpecialChars.LadderUp,
                 ConsoleColor.DarkYellow);
+            AllMaps[1].TerrainData[10, 5].Thing = new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
+                "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red);
 
         }
         public static Tile[,] LoadTerrain(string textFile)

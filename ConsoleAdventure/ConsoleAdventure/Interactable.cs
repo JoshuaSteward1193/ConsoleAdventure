@@ -16,6 +16,8 @@ namespace ConsoleAdventure
         public int InteractionID { get; set; }
         public int MaintainanceID { get; set; }
         public int Charges { get; set; }
+        public int YPos { get; set; }
+        public int XPos { get; set; }
         
         public Interactable(string name, string desc, char ico, int charge, int id, int mId, ConsoleColor color, ConsoleColor bColor = ConsoleColor.Black)
         {
@@ -42,7 +44,26 @@ namespace ConsoleAdventure
                 case 0:
                     Console.WriteLine($"You kick the {Name}. Nothing happens.");
                     break;
+                case 1:
+                    Console.WriteLine($"You collect from the {Name}.");
+                    DecreaseCharges();
+                    break;
             }
+
+        }
+        public virtual void SetPos(int y, int x)
+        {
+            YPos = y;
+            XPos = x;
+        }
+        public virtual void DecreaseCharges()
+        {
+            Charges--;
+            if(Charges <= 0)
+            {
+                Program.currentMap.TerrainData[YPos, XPos].DestroyThing();
+            }
+            
         }
     }
 }
