@@ -73,7 +73,10 @@
     <Compile Include="Character.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="GameData.cs" />
+    <Compile Include="GameItem.cs" />
     <Compile Include="Interactable.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="InventoryController.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />

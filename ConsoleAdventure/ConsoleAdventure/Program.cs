@@ -13,6 +13,7 @@ namespace ConsoleAdventure
 		public static Map currentMap;
 		public static int DrawTime;
 		public static Player p1;
+        public static Inventory PlayerInventory;
 		public static bool goodInput;
 		public static bool moveInput;
 
@@ -32,6 +33,7 @@ namespace ConsoleAdventure
 			GameData.DataBuild();
 			currentMap = GameData.AllMaps[0];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
+            PlayerInventory = new Inventory();
 			//Stopwatch for debug purposes
 			Stopwatch sw = new Stopwatch();
 
@@ -199,6 +201,7 @@ namespace ConsoleAdventure
 		
 		private static void PlayerInput()
 		{
+            Console.CursorVisible = true;
 			moveInput = false;
             
             while (!moveInput)
@@ -218,6 +221,7 @@ namespace ConsoleAdventure
 				{
 					//Perform actions
 				}
+                Console.CursorVisible = false;
 			}
 			
 		}
@@ -282,9 +286,15 @@ namespace ConsoleAdventure
                 }
             }
         }
-		private static void PerformActions()
+		private static void PerformActions(ConsoleKey input)
 		{
+            switch (input)
+            {
+                case ConsoleKey.I:
+                    //OPEN INVENTORY
+                    break;
 
+            }
 		}
 	}
 }
