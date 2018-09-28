@@ -8,23 +8,30 @@ namespace ConsoleAdventure
 {
     class InventoryController
     {
-        private static List<GameItem> displayItems = new List<GameItem>();
         private static bool[] selectedIndex;
-
+        private static int indexer;
+        
         public static void ShowInventory(Inventory inv)
         {
-            int i = 0;
-            foreach(GameItem x in inv.Items)
+            if(inv.Items.Count > 0)
             {
-                i++;
-                displayItems.Add(x);
+                indexer = 0;
+                selectedIndex = new bool[inv.Items.Count];
+                selectedIndex[0] = true;
+                for (int j = 1; j < selectedIndex.Length; j++)
+                {
+                    selectedIndex[j] = false;
+                }
+                PrintInv(inv);
+                ControlInv(inv);
             }
-            selectedIndex = new bool[displayItems.Count];
-            selectedIndex[0] = true;
-            for(int j = 1; j < selectedIndex.Length; j++)
+            else
             {
-                selectedIndex[j] = false;
+                Console.Clear();
+                Console.WriteLine("There is nothing in the inventory");
             }
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey(true);
         }
 
         public static void PrintLine(string name, bool selected, string desc)
@@ -39,13 +46,60 @@ namespace ConsoleAdventure
             }            
         }
 
-        public static void PrintInv()
+        public static void PrintInv(Inventory inv)
         {
+            Console.Clear();
+            Console.WriteLine("Use the arrow keys to select an item, and press Enter to use it. Press escape to go back.");
             GameItem item;
-            for(int i = 0; i < displayItems.Count; i++)
+            for(int i = 0; i < inv.Items.Count; i++)
             {
-                item = displayItems[i];
+                item = inv.Items[i];
                 PrintLine(item.Name, selectedIndex[i], item.Description);
+            }
+            if (inv.Items.Count == 0)
+            {
+                Console.WriteLine("There is nothing in the inventory.");
+            }
+        }
+        public static void ControlInv(Inventory inv)
+        {
+            bool goodInput = false;
+            while (!goodInput)
+            {                
+                switch (Console.ReadKey(false).Key)
+                {
+
+                    case ConsoleKey.UpArrow:
+                        if(indexer > 0)
+                        {
+                            selectedIndex[indexer] = false;
+                            indexer--;
+                            selectedIndex[indexer] = true;
+                            PrintInv(inv);
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if(indexer < selectedIndex.Length - 1)
+                        {
+                            selectedIndex[indexer] = false;
+                            indexer++;
+                            selectedIndex[indexer] = true;
+                            PrintInv(inv);
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                        if(inv.Items.Count > 0)
+                        {
+                            Console.Clear();
+                            inv.Items[indexer].UseItem();
+                            inv.Items.RemoveAt(indexer);
+                        }
+                        goodInput = true;                        
+                        break;
+                    case ConsoleKey.Escape:
+                        goodInput = true;
+                        break;
+                }
             }
         }
     }

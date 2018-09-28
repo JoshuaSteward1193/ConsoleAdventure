@@ -46,7 +46,7 @@ namespace ConsoleAdventure
 
             //INTRO
             Console.WriteLine("Welcome to the adventure.");
-            Console.WriteLine("For best results, please right-click on the title bar and set your font to Consolas.");
+            Console.WriteLine("For best results, please right-click on the title bar and set your font to Courier New.");
             Console.WriteLine("Thank you for playing my game.");
 			Console.WriteLine("Press anykey to begin");
 			Console.ReadKey();
@@ -203,8 +203,9 @@ namespace ConsoleAdventure
 		{
             Console.CursorVisible = true;
 			moveInput = false;
+            goodInput = false;
             
-            while (!moveInput)
+            while (!moveInput && !goodInput)
             {
                 ConsoleKey UserInput = ConsoleKey.X;
                 if (Console.KeyAvailable)
@@ -219,7 +220,8 @@ namespace ConsoleAdventure
 				}
 				else
 				{
-					//Perform actions
+                    PerformActions(UserInput);
+                    
 				}
                 Console.CursorVisible = false;
 			}
@@ -291,7 +293,8 @@ namespace ConsoleAdventure
             switch (input)
             {
                 case ConsoleKey.I:
-                    //OPEN INVENTORY
+                    InventoryController.ShowInventory(PlayerInventory);
+                    goodInput = true;
                     break;
 
             }

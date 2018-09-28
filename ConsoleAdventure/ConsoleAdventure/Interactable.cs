@@ -45,8 +45,17 @@ namespace ConsoleAdventure
                     Console.WriteLine($"You kick the {Name}. Nothing happens.");
                     break;
                 case 1:
-                    Console.WriteLine($"You collect from the {Name}.");
+                    //Adds between 1 and 4 RedMushrooms to the inventory
+                    
                     DecreaseCharges();
+                    int i = Program.rand.Next(1, 5);
+                    Console.WriteLine($"You collect {i} mushrooms from the {Name}.");
+                    while (i > 0)
+                    {
+                        Program.PlayerInventory.Items.Add(new GameItem("Red Mushroom", "A nice red mushroom. Probably edible.", 1));
+                        i--;
+                    }
+                    
                     break;
             }
 

@@ -11,6 +11,7 @@ namespace ConsoleAdventure
     {
         public static List<Map> AllMaps = new List<Map>();
         public static List<Transition> Transitions = new List<Transition>();
+        public static List<Interactable> AllInteractables = new List<Interactable>();
 
         public static void DataBuild()
         {
@@ -50,6 +51,10 @@ namespace ConsoleAdventure
                 "As you cross the threshold and re-enter the sun's bright light",
                 "You hear a distant screech echoing up the tunnel behind you"
             }));
+            //CREATE OBJECTS
+            AllInteractables.Add(new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
+                "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red));
+
 
             //ADD OBJECTS
             AllMaps[0].TerrainData[8, 13].Thing = new Interactable("Old Stump", "It is the remains of an ancient tree",
@@ -63,6 +68,7 @@ namespace ConsoleAdventure
                 ConsoleColor.DarkYellow);
             AllMaps[1].TerrainData[10, 5].Thing = new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
                 "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red);
+            
 
             //ADD CHARACTERS
             AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, ConsoleColor.Yellow, 50, AllMaps[0]));
