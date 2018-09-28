@@ -78,6 +78,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryController.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MushroomColonyObject.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />

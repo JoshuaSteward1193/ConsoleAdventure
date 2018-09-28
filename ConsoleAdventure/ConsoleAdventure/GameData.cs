@@ -66,8 +66,9 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[AllMaps[1].SpawnPoints[0].YVal, AllMaps[1].SpawnPoints[0].XVal].Thing = new Portal
                 ("Wooden Ladder", "It leads back to the surface", Transitions[1], AllMaps[0], new Coordinate(21, 50), SpecialChars.LadderUp,
                 ConsoleColor.DarkYellow);
-            AllMaps[1].TerrainData[10, 5].Thing = new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
-                "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red);
+            AllMaps[1].TerrainData[10, 5].Thing = new MushroomColonyObject();
+            AllMaps[1].TerrainData[12, 12].Thing = new MushroomColonyObject();
+            AllMaps[0].TerrainData[10, 15].Thing = new MushroomColonyObject();
             
 
             //ADD CHARACTERS

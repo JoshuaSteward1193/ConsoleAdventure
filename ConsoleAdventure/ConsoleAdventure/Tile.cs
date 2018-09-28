@@ -118,8 +118,7 @@ namespace ConsoleAdventure
                 if(thing != null)
                 {
                     thing.SetPos(Coord.YVal, Coord.XVal);
-                }
-                
+                }                
             }
         }
 
