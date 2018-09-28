@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AncientGraveObject.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="GameData.cs" />

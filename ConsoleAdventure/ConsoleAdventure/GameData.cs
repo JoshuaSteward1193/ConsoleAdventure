@@ -59,8 +59,7 @@ namespace ConsoleAdventure
             //ADD OBJECTS
             AllMaps[0].TerrainData[8, 13].Thing = new Interactable("Old Stump", "It is the remains of an ancient tree",
                 'o', -1, 0, 0, ConsoleColor.DarkYellow);
-            AllMaps[0].TerrainData[20, 50].Thing = new Interactable("Ancient Grave", "This is the place where someone great " +
-                "was buried in ages past", SpecialChars.Cross, -1, 0, 0, ConsoleColor.DarkGray);
+            AllMaps[0].TerrainData[20, 50].Thing = new AncientGraveObject();
             AllMaps[0].TerrainData[21, 50].Thing = new Portal("Dark Cave", "This cave leads down into the darkness.",
                 Transitions[0], AllMaps[1], AllMaps[1].SpawnPoints[0], SpecialChars.CaveEntrance, ConsoleColor.Gray);
             AllMaps[1].TerrainData[AllMaps[1].SpawnPoints[0].YVal, AllMaps[1].SpawnPoints[0].XVal].Thing = new Portal
