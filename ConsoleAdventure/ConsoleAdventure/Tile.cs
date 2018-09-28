@@ -179,6 +179,12 @@ namespace ConsoleAdventure
                     FColor = ConsoleColor.Gray;
                     Passable = true;
                     break;
+                case '.':
+                    Icon = SpecialChars.Dirt;
+                    Terrain = "Bare dirt";
+                    FColor = ConsoleColor.DarkYellow;
+                    Passable = true;
+                    break;
                     
             }
         }

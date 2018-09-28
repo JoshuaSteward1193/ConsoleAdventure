@@ -22,5 +22,6 @@ namespace ConsoleAdventure
         public static char Diamond = '\u25ca';
         public static char HatManRight = '\u1e50';
         public static char HatManLeft = '\u1e52';
+        public static char Dirt = '\u061e';
     }
 }
