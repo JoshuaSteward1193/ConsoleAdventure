@@ -41,7 +41,9 @@ namespace ConsoleAdventure
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
             Console.WindowWidth = 91;
-            
+
+            //ASTAR PATHFINDING TEST - BROKEN
+            //currentMap.AICharacters[0].Path = Pathfinding.AStar(currentMap.TerrainData[currentMap.AICharacters[0].Position.YVal,currentMap.AICharacters[0].Position.XVal], currentMap.TerrainData[10, 10], currentMap);
 
 
             //INTRO
@@ -280,6 +282,7 @@ namespace ConsoleAdventure
 		}
         private static void CharacterAI()
         {
+            
             if(currentMap.AICharacters.Count > 0)
             {
                 foreach(Character c in currentMap.AICharacters)
@@ -287,6 +290,16 @@ namespace ConsoleAdventure
                     c.Wander();
                 }
             }
+            
+            /*
+            foreach(Character c in currentMap.AICharacters)
+            {
+                if(c.Path.Count > 0)
+                {
+                    c.GoToTarget();
+                }
+            }
+            */
         }
 		private static void PerformActions(ConsoleKey input)
 		{

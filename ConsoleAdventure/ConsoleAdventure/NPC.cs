@@ -34,7 +34,7 @@ namespace ConsoleAdventure
         }
 
 
-        public NPC(string name, char ico, ConsoleColor col, int hp, Map map) : base(name, ico, col, hp, map)
+        public NPC(string name, char ico, int hp, Map map) : base(name, ico, ConsoleColor.Cyan, hp, map)
         {
         }
         private void LeftOrRight()

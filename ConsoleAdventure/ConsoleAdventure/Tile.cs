@@ -8,6 +8,9 @@ namespace ConsoleAdventure
 {
     class Tile
     {
+        public int Gcost;
+        public int Hcost;
+        public Tile Parent = null;
         public Coordinate Coord { get; set; }
         private char icon;
         public char Icon
@@ -168,7 +171,7 @@ namespace ConsoleAdventure
                     FColor = ConsoleColor.DarkCyan;
                     Passable = false;
                     break;
-                case '/':
+                case '#':
                     Icon = SpecialChars.SolidMaterial;
                     Terrain = "Rock Wall";
                     FColor = ConsoleColor.DarkGray;
@@ -184,6 +187,16 @@ namespace ConsoleAdventure
                     Terrain = "Bare dirt";
                     FColor = ConsoleColor.DarkYellow;
                     Passable = true;
+                    break;
+                case '/':
+                    Terrain = "Steep Rocks";
+                    FColor = ConsoleColor.DarkGray;
+                    Passable = false;
+                    break;
+                case '\\':
+                    Terrain = "Steep Rocks";
+                    FColor = ConsoleColor.DarkGray;
+                    Passable = false;
                     break;
                     
             }
@@ -203,6 +216,37 @@ namespace ConsoleAdventure
         public void DestroyThing()
         {
             Thing = null;
+        }
+        public int GetHcost(Tile goal)
+        {
+            if(Hcost != 0)
+            {
+                int x1 = Coord.XVal;
+                int x2 = goal.Coord.XVal;
+                int y1 = Coord.YVal;
+                int y2 = goal.Coord.YVal;
+                return Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
+            }
+            else
+            {
+                return Hcost;
+            }
+            
+        }
+        public int GetGcost(Tile start)
+        {
+            if(Gcost != 0)
+            {
+                int x1 = Coord.XVal;
+                int x2 = start.Coord.XVal;
+                int y1 = Coord.YVal;
+                int y2 = start.Coord.YVal;
+                return Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
+            }
+            else
+            {
+                return Gcost;
+            }
         }
     }
 }

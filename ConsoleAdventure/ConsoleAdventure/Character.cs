@@ -29,6 +29,7 @@ namespace ConsoleAdventure
         virtual public Coordinate Position { get; set; }
         public ConsoleColor Color { get; set; }
         public Map MyMap { get; set; }
+        public List<Tile> Path = new List<Tile>();
 
         public Character(string name, char ico, ConsoleColor col, int hp, Map map)
         {
@@ -73,6 +74,17 @@ namespace ConsoleAdventure
             if (target != null && target.Passable)
             {
                 target.MoveCharacterTo(Program.currentMap.TerrainData[Position.YVal, Position.XVal], this);
+            }
+        }
+        public void GoToTarget()
+        {
+            if(Path.Count > 0)
+            {
+                if(MyMap.TerrainData[Path[0].Coord.YVal, Path[0].Coord.XVal].Passable)
+                {
+                    MyMap.TerrainData[Path[0].Coord.YVal, Path[0].Coord.YVal].MoveCharacterTo(MyMap.TerrainData[Position.YVal, Position.XVal], this);
+                    Path.RemoveAt(0);
+                }                
             }
         }
 

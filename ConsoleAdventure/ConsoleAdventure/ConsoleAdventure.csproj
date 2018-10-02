@@ -73,14 +73,17 @@
     <Compile Include="AncientGraveObject.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="GameData.cs" />
     <Compile Include="GameItem.cs" />
+    <Compile Include="Goblin.cs" />
     <Compile Include="Interactable.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryController.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MushroomColonyObject.cs" />
     <Compile Include="NPC.cs" />
+    <Compile Include="Pathfinding.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />
     <Compile Include="Program.cs" />
@@ -121,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GoblinLair1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StoryRoom1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

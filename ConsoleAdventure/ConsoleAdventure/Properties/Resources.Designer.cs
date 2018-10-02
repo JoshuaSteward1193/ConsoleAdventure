@@ -61,7 +61,11 @@ namespace ConsoleAdventure.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ///@/////////////////////////////////////////////////////////////////////////////////////////////////////@
+        ///@/////////////////////////////////////////////////////////////////////////////////////////////////////@
+        ///@/////+++++///////////////////////////////////////////////////////////////////////////////////////////@
+        ///@/////+++++///////////////////////////////////////////////////////////////////////////////// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GoblinLair1 {
             get {
@@ -70,10 +74,19 @@ namespace ConsoleAdventure.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string StoryRoom1 {
+            get {
+                return ResourceManager.GetString("StoryRoom1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFF~~~~,FFFFF,F,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
-        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFF~~~~,FFFFF,F,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
-        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFF~~~~,FFFFF,F,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, [rest of string was truncated]&quot;;.
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF~~~~,FFFFF,F,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF~~~~,FFFFF,F,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TestRoom1 {
             get {

@@ -71,7 +71,7 @@ namespace ConsoleAdventure
             
 
             //ADD CHARACTERS
-            AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, ConsoleColor.Yellow, 50, AllMaps[0]));
+            AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, 50, AllMaps[0]));
 
         }
         public static Tile[,] LoadTerrain(string textFile)
