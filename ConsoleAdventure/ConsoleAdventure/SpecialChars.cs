@@ -23,5 +23,7 @@ namespace ConsoleAdventure
         public static char HatManRight = '\u1e50';
         public static char HatManLeft = '\u1e52';
         public static char Dirt = '\u061e';
+        public static char Columns = '\u0428';
+        public static char Door = '\u05d7';
     }
 }

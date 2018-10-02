@@ -8,7 +8,7 @@ namespace ConsoleAdventure
 {
     class Player : Character
     {
-        private bool isAI;
+        public List<DoorKey> KeyRing = new List<DoorKey>();
         public Player(string name, char ico, ConsoleColor col, int hp) : base(name, ico, col, hp, null)
         {
             

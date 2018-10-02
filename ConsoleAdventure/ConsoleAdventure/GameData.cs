@@ -18,6 +18,7 @@ namespace ConsoleAdventure
             //LOAD MAPS
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
             AllMaps.Add(new Map("Goblin Lair", LoadTerrain("GoblinLair1"), new Coordinate(3, 8)));
+            AllMaps.Add(new Map("StoryRoom1", LoadTerrain("StoryRoom1"), new Coordinate(5, 17)));
 
             //CREATE TRANSITIONS
             Transitions.Add(new Transition(3000, new string[]
@@ -50,10 +51,7 @@ namespace ConsoleAdventure
                 "A few more stairs, and you can make out the bright sunshine streaming into the cave",
                 "As you cross the threshold and re-enter the sun's bright light",
                 "You hear a distant screech echoing up the tunnel behind you"
-            }));
-            //CREATE OBJECTS
-            AllInteractables.Add(new Interactable("Mushroom Ring", "A ring-shaped group of mushrooms are " +
-                "growing here", SpecialChars.MushroomRing, 1, 1, 0, ConsoleColor.Red));
+            }));   
 
 
             //ADD OBJECTS
@@ -68,6 +66,7 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[10, 5].Thing = new MushroomColonyObject();
             AllMaps[1].TerrainData[12, 12].Thing = new MushroomColonyObject();
             AllMaps[0].TerrainData[10, 15].Thing = new MushroomColonyObject();
+            AllMaps[2].TerrainData[13, 21].Thing = new LockedDoorObject("Locked Door", "This is a heavy wooden door.", 1);
             
 
             //ADD CHARACTERS
@@ -88,6 +87,9 @@ namespace ConsoleAdventure
                     break;
                 case "GoblinLair1":
                     currentText = Properties.Resources.GoblinLair1;
+                    break;
+                case "StoryRoom1":
+                    currentText = Properties.Resources.StoryRoom1;
                     break;
                 default:
                     currentText = Properties.Resources.TestRoom1;

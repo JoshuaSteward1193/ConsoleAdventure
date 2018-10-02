@@ -70,7 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AncientGraveObject.cs" />
+    <Compile Include="DoorKey.cs" />
+    <Compile Include="GameObjects\AncientGraveObject.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Enemy.cs" />
@@ -80,8 +81,9 @@
     <Compile Include="Interactable.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryController.cs" />
+    <Compile Include="GameObjects\LockedDoorObject.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="MushroomColonyObject.cs" />
+    <Compile Include="GameObjects\MushroomColonyObject.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Pathfinding.cs" />
     <Compile Include="Player.cs" />

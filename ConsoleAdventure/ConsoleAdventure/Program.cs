@@ -31,13 +31,13 @@ namespace ConsoleAdventure
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
-			currentMap = GameData.AllMaps[0];
+			currentMap = GameData.AllMaps[2];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             PlayerInventory = new Inventory();
 			//Stopwatch for debug purposes
 			Stopwatch sw = new Stopwatch();
 
-			GameData.AllMaps[0].TerrainData[GameData.AllMaps[0].SpawnPoints[0].YVal, GameData.AllMaps[0].SpawnPoints[0].XVal].SpawnCharacter(p1);
+			currentMap.TerrainData[currentMap.SpawnPoints[0].YVal, currentMap.SpawnPoints[0].XVal].SpawnCharacter(p1);
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
             Console.WindowWidth = 91;
