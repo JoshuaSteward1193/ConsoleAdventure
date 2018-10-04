@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
-    class Goblin : Enemy
+    class GoblinEnemy : Enemy
     {
-        public Goblin(string name, int hp, Map map) : base(name, "goblin", 'g', ConsoleColor.Red, hp, map)
+        public GoblinEnemy(string name, int hp, Map map) : base(name, "Goblin", 'g', ConsoleColor.Yellow, hp, map)
         {
-            
         }
     }
 }
+ 

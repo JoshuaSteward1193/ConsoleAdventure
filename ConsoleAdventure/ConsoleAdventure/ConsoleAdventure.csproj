@@ -79,7 +79,7 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="GameData.cs" />
     <Compile Include="GameItem.cs" />
-    <Compile Include="Goblin.cs" />
+    <Compile Include="GoblinEnemy.cs" />
     <Compile Include="Interactable.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryController.cs" />
