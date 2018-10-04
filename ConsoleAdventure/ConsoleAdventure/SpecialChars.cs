@@ -25,5 +25,6 @@ namespace ConsoleAdventure
         public static char Dirt = '\u061e';
         public static char Columns = '\u0428';
         public static char Door = '\u05d7';
+        public static char Chest = '\u039e';
     }
 }

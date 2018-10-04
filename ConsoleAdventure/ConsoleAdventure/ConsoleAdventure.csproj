@@ -70,6 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameItems\AppleItem.cs" />
+    <Compile Include="GameObjects\ChestObject.cs" />
     <Compile Include="DoorKey.cs" />
     <Compile Include="GameObjects\AncientGraveObject.cs" />
     <Compile Include="Character.cs" />

@@ -23,20 +23,25 @@ namespace ConsoleAdventure
         {
             bool locked = true;
 
-            foreach(DoorKey key in Program.p1.KeyRing)
+            for(int i = 0; i < Program.PlayerInventory.Items.Count; i++)
             {
-                if(key.ID == lockID)
+                DoorKey key = Program.PlayerInventory.Items[i] as DoorKey;
+                if(key != null)
                 {
-                    locked = false;
+                    if(key.ID == lockID)
+                    {
+                        locked = false;
+                    }
                 }
             }
             if (!locked)
             {
                 Console.WriteLine($"You unlock the {Name}.");
+                DecreaseCharges();
             }
             else
             {
-                Console.WriteLine("You need a key of somekind to open this door.");
+                Console.WriteLine("You need a key of some kind to open this door.");
             }
         }
     }

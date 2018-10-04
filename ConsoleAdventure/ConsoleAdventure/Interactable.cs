@@ -47,7 +47,12 @@ namespace ConsoleAdventure
             {
                 case 0:
                     Console.WriteLine($"You kick the {Name}. Nothing happens.");
-                    break;                    
+                    break;
+                case 1:
+                    Console.WriteLine("The door looks like it will fall down at any minute. You throw all your weight " +
+                        "aginst the door. It falls outward under the blow, and you are free.");
+                    DecreaseCharges();
+                    break;
             }
 
         }

@@ -92,7 +92,11 @@ namespace ConsoleAdventure
                         {
                             Console.Clear();
                             inv.Items[indexer].UseItem();
-                            inv.Items.RemoveAt(indexer);
+                            if (inv.Items[indexer].Usable)
+                            {
+                                inv.Items.RemoveAt(indexer);
+                            }
+                            
                         }
                         goodInput = true;                        
                         break;

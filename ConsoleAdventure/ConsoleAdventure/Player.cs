@@ -13,5 +13,10 @@ namespace ConsoleAdventure
         {
             
         }
+
+        public void SetHealthTo(int _value)
+        {
+            Health = _value;
+        }
     }
 }

@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
-    class DoorKey
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
+    class DoorKey : GameItem
+    {        
         public int ID { get; set; }
 
-        public DoorKey(string _name, string _desc, int _id)
+        public DoorKey(string _name, string _desc, int _id) : base(_name, _desc, 0, false)
         {
-            Name = _name;
-            Description = _desc;
             ID = _id;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleAdventure.GameObjects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -66,7 +67,11 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[10, 5].Thing = new MushroomColonyObject();
             AllMaps[1].TerrainData[12, 12].Thing = new MushroomColonyObject();
             AllMaps[0].TerrainData[10, 15].Thing = new MushroomColonyObject();
+
             AllMaps[2].TerrainData[13, 21].Thing = new LockedDoorObject("Locked Door", "This is a heavy wooden door.", 1);
+            AllMaps[2].TerrainData[7, 17].Thing = new Interactable("Cell Door", "This door is old and decaying.", SpecialChars.Door, 1, 1, 0, ConsoleColor.DarkYellow);
+            AllMaps[2].TerrainData[9, 56].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
+            AllMaps[2].TerrainData[11, 56].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new DoorKey("Rusty Key", "It looks like it's been well-used.", 1)));
             
 
             //ADD CHARACTERS

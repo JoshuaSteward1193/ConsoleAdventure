@@ -20,10 +20,21 @@ namespace ConsoleAdventure
             set
             {
                 health = value;
-                if (health < 0)
-                {
-                    health = 0;
-                }
+                if (health < 0) health = 0;                
+                if (Health > MaxHealth) health = MaxHealth;
+            }
+        }
+        private int maxHealth;
+        public int MaxHealth
+        {
+            get
+            {
+                return maxHealth;
+            }
+            set
+            {
+                maxHealth = value;
+                Health = maxHealth;
             }
         }
         virtual public Coordinate Position { get; set; }
@@ -35,7 +46,7 @@ namespace ConsoleAdventure
         {
             Name = name;
             Icon = ico;
-            Health = hp;            
+            MaxHealth = hp;            
             Color = col;
             MyMap = map;
 

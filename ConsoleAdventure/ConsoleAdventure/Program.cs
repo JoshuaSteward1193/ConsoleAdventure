@@ -33,6 +33,7 @@ namespace ConsoleAdventure
 			GameData.DataBuild();
 			currentMap = GameData.AllMaps[2];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
+            p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
 			//Stopwatch for debug purposes
 			Stopwatch sw = new Stopwatch();
@@ -41,6 +42,7 @@ namespace ConsoleAdventure
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
             Console.WindowWidth = 91;
+            Console.WindowHeight = 37;
 
             //ASTAR PATHFINDING TEST - BROKEN
             //currentMap.AICharacters[0].Path = Pathfinding.AStar(currentMap.TerrainData[currentMap.AICharacters[0].Position.YVal,currentMap.AICharacters[0].Position.XVal], currentMap.TerrainData[10, 10], currentMap);
@@ -190,7 +192,7 @@ namespace ConsoleAdventure
         {
             Console.WriteLine();
             Console.Write(SideBuffer);
-            Console.WriteLine($"Player: {p1.Name} | Health: {p1.Health} | Location: {currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal].Terrain}");
+            Console.WriteLine($"Player: {p1.Name} | Health: {p1.Health}/{p1.MaxHealth} | Location: {currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal].Terrain}");
             Console.WriteLine();
         }
 		

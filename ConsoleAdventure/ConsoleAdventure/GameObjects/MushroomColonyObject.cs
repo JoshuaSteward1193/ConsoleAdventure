@@ -28,7 +28,7 @@ namespace ConsoleAdventure
             Console.WriteLine($"You collect {i} mushrooms from the {Name}.");
             while (i > 0)
             {
-                Program.PlayerInventory.Items.Add(new GameItem("Red Mushroom", "A nice red mushroom. Probably edible.", 1));
+                Program.PlayerInventory.Items.Add(new GameItem("Red Mushroom", "A nice red mushroom. Probably edible.", 1, true));
                 i--;
             }
         }
