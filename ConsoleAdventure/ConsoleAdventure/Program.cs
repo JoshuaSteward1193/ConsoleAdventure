@@ -10,6 +10,7 @@ namespace ConsoleAdventure
 	class Program
 	{
 		public static Random rand = new Random();
+        public static Stopwatch sw;
 		public static Map currentMap;
 		public static int DrawTime;
 		public static Player p1;
@@ -31,12 +32,12 @@ namespace ConsoleAdventure
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
-			currentMap = GameData.AllMaps[2];
+			currentMap = GameData.AllMaps[0];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
 			//Stopwatch for debug purposes
-			Stopwatch sw = new Stopwatch();
+			sw = new Stopwatch();
 
 			currentMap.TerrainData[currentMap.SpawnPoints[0].YVal, currentMap.SpawnPoints[0].XVal].SpawnCharacter(p1);
 			Console.CursorVisible = false;
@@ -57,32 +58,39 @@ namespace ConsoleAdventure
 
 			//TURN CYCLE
 			while (p1.Health > 0)
-			{
-				Console.Clear();
-				sw.Start();
+			{								
                 CharacterAI();
-                PrintHeader();
-				PrintMap(PrintColor);
-				sw.Stop();
-				DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
-				sw.Reset();                
 
-				if (DebugGame)
-				{
-                    Console.Write(SideBuffer);
-					Console.WriteLine($"Map Draw Time: {DrawTime} ms");
-				}
-                while (Console.KeyAvailable)
-                {
-                    Console.ReadKey(false);
-                }
+                DrawEverything();
+				               
+
+				
                 
                 PlayerInput();
 
 			}
 
 		}
+        private static void DrawEverything()
+        {
+            Console.Clear();
+            sw.Start();
+            PrintHeader();
+            PrintMap(PrintColor);
+            sw.Stop();
+            DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
+            sw.Reset();
 
+            if (DebugGame)
+            {
+                Console.Write(SideBuffer);
+                Console.WriteLine($"Map Draw Time: {DrawTime} ms");
+            }
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(false);
+            }
+        }
 		private static void PrintMap(bool color)
 		{
 			ConsoleColor targetColor = ConsoleColor.Black;
@@ -267,6 +275,9 @@ namespace ConsoleAdventure
                     Console.WriteLine($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
                         $"{currentMap.TerrainData[targetY, targetX].Thing.Description}.");
                     currentMap.TerrainData[targetY, targetX].Thing.Interact();
+                    Console.ReadKey(true);
+                    DrawEverything();
+
                 }
                 else if(currentMap.TerrainData[targetY, targetX].Resident != null)
                 {

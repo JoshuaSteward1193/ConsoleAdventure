@@ -179,7 +179,7 @@ namespace ConsoleAdventure
                     break;
                 case '+':
                     Terrain = "Stone Structure";
-                    FColor = ConsoleColor.Gray;
+                    FColor = ConsoleColor.DarkGray;
                     Passable = true;
                     break;
                 case '.':

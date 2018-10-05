@@ -8,7 +8,7 @@ namespace ConsoleAdventure
 {
     class GoblinEnemy : Enemy
     {
-        public GoblinEnemy(string name, int hp, Map map) : base(name, "Goblin", 'g', ConsoleColor.Yellow, hp, map)
+        public GoblinEnemy(string name, int hp, Map map) : base(name,4, 10, "Goblin", 'g', ConsoleColor.Yellow, hp, map)
         {
         }
     }
