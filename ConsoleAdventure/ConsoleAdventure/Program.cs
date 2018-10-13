@@ -23,8 +23,8 @@ namespace ConsoleAdventure
 		//USER PREFERENCES
 		public static bool PrintColor = true;
 		public static bool DebugGame = true;
-		public static int YBuffer = 11; //Should be odd number
-		public static int XBuffer = 21; //Should be odd number
+		public static int YBuffer = 9; //Should be odd number
+		public static int XBuffer = 17; //Should be odd number
         public static string SideBuffer = "                       ";
 
 
@@ -43,7 +43,7 @@ namespace ConsoleAdventure
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
             Console.WindowWidth = 91;
-            Console.WindowHeight = 37;
+            Console.WindowHeight = 33;
 
             //ASTAR PATHFINDING TEST - BROKEN
             //currentMap.AICharacters[0].Path = Pathfinding.AStar(currentMap.TerrainData[currentMap.AICharacters[0].Position.YVal,currentMap.AICharacters[0].Position.XVal], currentMap.TerrainData[10, 10], currentMap);
@@ -114,7 +114,7 @@ namespace ConsoleAdventure
 			}
 			while (i < currentMap.TerrainData.GetLength(0) && i < p1.Position.YVal + iOffset)
 			{
-				jOffset = 22;
+				jOffset = XBuffer;
 				if (p1.Position.XVal - jOffset >= 0)
 				{
 					j = p1.Position.XVal - jOffset;
@@ -281,8 +281,12 @@ namespace ConsoleAdventure
                 }
                 else if(currentMap.TerrainData[targetY, targetX].Resident != null)
                 {
-                    if(currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(NPC)){
+                    if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(NPC)) {
                         Console.WriteLine($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
+                    }
+                    else //if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(Enemy))
+                    {
+                        CombatManager combatManager = new CombatManager(p1, currentMap.TerrainData[targetY, targetX].Resident as Enemy);
                     }
                 }
                 else

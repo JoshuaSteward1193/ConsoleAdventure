@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombatManager.cs" />
     <Compile Include="GameItems\AppleItem.cs" />
     <Compile Include="GameObjects\ChestObject.cs" />
     <Compile Include="DoorKey.cs" />
@@ -97,6 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScreenTransition.cs" />
     <Compile Include="SpecialChars.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Transition.cs" />
@@ -131,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\StoryRoom1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntroAnimation1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
