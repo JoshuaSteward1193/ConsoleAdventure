@@ -24,7 +24,7 @@ namespace ConsoleAdventure
 		public static bool PrintColor = true;
 		public static bool DebugGame = true;
 		public static int YBuffer = 9; //Should be odd number
-		public static int XBuffer = 17; //Should be odd number
+		public static int XBuffer = 21; //Should be odd number
         public static string SideBuffer = "                       ";
 
 
@@ -32,7 +32,7 @@ namespace ConsoleAdventure
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
-			currentMap = GameData.AllMaps[0];
+			currentMap = GameData.AllMaps[2];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
@@ -55,6 +55,8 @@ namespace ConsoleAdventure
             Console.WriteLine("Thank you for playing my game.");
 			Console.WriteLine("Press anykey to begin");
 			Console.ReadKey();
+
+            ScreenTransition.Transition();
 
 			//TURN CYCLE
 			while (p1.Health > 0)

@@ -6,15 +6,35 @@ using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
-    class ScreenTransition
+    static class ScreenTransition
     {
-        public ScreenTransition(int _yNum, int _xNum)
+        static StringBuilder print = new StringBuilder(Console.WindowWidth);
+        
+        public static void Transition()
         {
-            StringBuilder print = new StringBuilder(_xNum * 2);
-        }
-        public void Transition()
-        {
+            int index = 0;
             
+            while(index != Console.WindowWidth - 1)
+            {
+                Console.Clear();
+                print.Insert(index, 'X');
+                index++;
+                print.Insert(index, 'X');
+                index++;
+                print.Insert(index, 'X');
+                index++;
+                for (int i = 0; i < Console.WindowHeight - 1; i++)
+                {
+                    Console.WriteLine(print);
+                    Console.WriteLine(print);
+                    Console.WriteLine(print);
+                    Console.WriteLine(print);
+                }
+                
+                System.Threading.Thread.Sleep(300);
+            }
+            
+            Console.ReadKey(true);
         }
     }
 }
