@@ -8,33 +8,78 @@ namespace ConsoleAdventure
 {
     static class ScreenTransition
     {
-        static StringBuilder print = new StringBuilder(Console.WindowWidth);
-        
+        static StringBuilder LeftLine = new StringBuilder();
+        static StringBuilder RightLine = new StringBuilder();
+
         public static void Transition()
         {
             int index = 0;
-            
-            while(index != Console.WindowWidth - 1)
+            bool leftAlign = true;
+            LeftLine.Append(' ', Console.WindowWidth - 1);
+            RightLine.Append(' ', Console.WindowWidth - 1);
+            Console.Clear();
+
+            while(index != Console.WindowWidth)
             {
                 Console.Clear();
-                print.Insert(index, 'X');
+                //Add 10 characters to each array
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
                 index++;
-                print.Insert(index, 'X');
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
                 index++;
-                print.Insert(index, 'X');
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
                 index++;
-                for (int i = 0; i < Console.WindowHeight - 1; i++)
-                {
-                    Console.WriteLine(print);
-                    Console.WriteLine(print);
-                    Console.WriteLine(print);
-                    Console.WriteLine(print);
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+                if (index == Console.WindowWidth - 1) break;
+                LeftLine[index] = 'X';
+                RightLine[RightLine.Length - index - 1] = 'X';
+                index++;
+
+                //Print on all lines of the console
+                for (int i = 0; i < Console.WindowHeight; i++)
+                {                    
+                    if (i % 3 == 0)
+                    {
+                        leftAlign = !leftAlign;
+                    }
+
+                    if (leftAlign) Console.WriteLine(LeftLine);
+                    else Console.WriteLine(RightLine);
                 }
-                
-                System.Threading.Thread.Sleep(300);
+                leftAlign = true;
+                System.Threading.Thread.Sleep(75);
             }
-            
-            Console.ReadKey(true);
-        }
+            //Console.ReadKey(true);
+        }   
+        
     }
 }

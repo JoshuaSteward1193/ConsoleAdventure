@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battlefield.cs" />
     <Compile Include="CombatManager.cs" />
     <Compile Include="GameItems\AppleItem.cs" />
     <Compile Include="GameObjects\ChestObject.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Pathfinding.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />
+    <Compile Include="PrintMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -136,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IntroAnimation1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Battlefield1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

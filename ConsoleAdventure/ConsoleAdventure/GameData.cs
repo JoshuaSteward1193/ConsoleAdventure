@@ -11,6 +11,7 @@ namespace ConsoleAdventure
     class GameData
     {
         public static List<Map> AllMaps = new List<Map>();
+        public static List<Battlefield> AllBFields = new List<Battlefield>();
         public static List<Transition> Transitions = new List<Transition>();
         public static List<Interactable> AllInteractables = new List<Interactable>();
 
@@ -20,6 +21,8 @@ namespace ConsoleAdventure
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
             AllMaps.Add(new Map("Goblin Lair", LoadTerrain("GoblinLair1"), new Coordinate(3, 8)));
             AllMaps.Add(new Map("StoryRoom1", LoadTerrain("StoryRoom1"), new Coordinate(5, 17)));
+
+            AllBFields.Add(new Battlefield("Battlefield 1", LoadTerrain("Battlefield1"), new Coordinate(4, 4)));
 
             //CREATE TRANSITIONS
             Transitions.Add(new Transition(3000, new string[]
