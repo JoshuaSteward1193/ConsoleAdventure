@@ -77,7 +77,7 @@ namespace ConsoleAdventure
         {
             Console.Clear();
             sw.Start();
-            PrintHeader();
+            PrintHeader();            
             PrintMap(PrintColor);
             sw.Stop();
             DrawTime = Convert.ToInt32(sw.ElapsedMilliseconds);
@@ -95,6 +95,8 @@ namespace ConsoleAdventure
         }
 		private static void PrintMap(bool color)
 		{
+            PrintMaps.Print(currentMap.TerrainData, YBuffer, XBuffer, p1.Position, color);
+            /*
 			ConsoleColor targetColor = ConsoleColor.Black;
 			StringBuilder sb = new StringBuilder();
 			int i;
@@ -171,6 +173,7 @@ namespace ConsoleAdventure
 				i++;
 			}
 			Console.ForegroundColor = ConsoleColor.Gray;
+            */
 		}          
 		
 		private static void BadPrint(bool color)

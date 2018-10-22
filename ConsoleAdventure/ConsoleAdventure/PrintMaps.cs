@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
-    class PrintMap
+    static class PrintMaps
     {
-        public static void Print(Tile[,] _tiles, int YBuffer, int XBuffer, Coordinate _center)
+        public static string SideBuffer = "                       ";
+        public static void Print(Tile[,] _tiles, int YBuffer, int XBuffer, Coordinate _center, bool color)
         {
             ConsoleColor targetColor = ConsoleColor.Black;
             StringBuilder sb = new StringBuilder();
@@ -19,9 +20,9 @@ namespace ConsoleAdventure
             if (_center.YVal - iOffset >= 0)
             {
                 i = _center.YVal - iOffset;
-                if (i >= currentMap.TerrainData.GetLength(0) - iOffset * 2)
+                if (i >= _tiles.GetLength(0) - iOffset * 2)
                 {
-                    i = currentMap.TerrainData.GetLength(0) - iOffset * 2;
+                    i = _tiles.GetLength(0) - iOffset * 2;
                 }
             }
             else
@@ -29,15 +30,15 @@ namespace ConsoleAdventure
                 i = 0;
                 iOffset -= (_center.YVal - iOffset);
             }
-            while (i < currentMap.TerrainData.GetLength(0) && i < _center.YVal + iOffset)
+            while (i < _tiles.GetLength(0) && i < _center.YVal + iOffset)
             {
                 jOffset = XBuffer;
                 if (_center.XVal - jOffset >= 0)
                 {
                     j = _center.XVal - jOffset;
-                    if (j >= currentMap.TerrainData.GetLength(1) - jOffset * 2)
+                    if (j >= _tiles.GetLength(1) - jOffset * 2)
                     {
-                        j = currentMap.TerrainData.GetLength(1) - jOffset * 2;
+                        j = _tiles.GetLength(1) - jOffset * 2;
                     }
                 }
                 else
@@ -47,10 +48,10 @@ namespace ConsoleAdventure
                 }
                 Console.Write(SideBuffer);
                 sb.Clear();
-                while (j < currentMap.TerrainData.GetLength(1) && j < p1.Position.XVal + jOffset)
+                while (j < _tiles.GetLength(1) && j < _center.XVal + jOffset)
                 {
-                    char target = currentMap.TerrainData[i, j].Icon;
-                    if (targetColor != currentMap.TerrainData[i, j].FColor) targetColor = currentMap.TerrainData[i, j].FColor;
+                    char target = _tiles[i, j].Icon;
+                    if (targetColor != _tiles[i, j].FColor) targetColor = _tiles[i, j].FColor;
                     if (sb.Length == 0)
                     {
                         sb.Append(target);
@@ -66,9 +67,9 @@ namespace ConsoleAdventure
                             Console.Write(sb);
                             sb.Clear();
                             sb.Append(target);
-                            if (targetColor != currentMap.TerrainData[i, j].FColor && color)
+                            if (targetColor != _tiles[i, j].FColor && color)
                             {
-                                targetColor = currentMap.TerrainData[i, j].FColor;
+                                targetColor = _tiles[i, j].FColor;
                             }
                         }
                     }
@@ -77,7 +78,7 @@ namespace ConsoleAdventure
                     {
                         if (targetColor != Console.ForegroundColor)
                         {
-                            Console.ForegroundColor = currentMap.TerrainData[i, j].FColor;
+                            Console.ForegroundColor = _tiles[i, j].FColor;
                         }
                     }
                     j++;

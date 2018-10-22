@@ -25,11 +25,13 @@ namespace ConsoleAdventure
         private void Combat()
         {
             Console.Clear();
-
+            bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(Program.p1);
             //Main Print Loop
             while (true)
             {
+                Console.Clear();
                 PrintHeader();
+                PrintMaps.Print(bField.TerrainData, 4, 14, bField.SpawnPoints[0], true);
                 Console.ReadKey();
             }
             

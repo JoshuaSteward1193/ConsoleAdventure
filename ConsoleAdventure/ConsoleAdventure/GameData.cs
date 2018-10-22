@@ -99,6 +99,9 @@ namespace ConsoleAdventure
                 case "StoryRoom1":
                     currentText = Properties.Resources.StoryRoom1;
                     break;
+                case "Battlefield1":
+                    currentText = Properties.Resources.Battlefield1;
+                    break;
                 default:
                     currentText = Properties.Resources.TestRoom1;
                     break;
