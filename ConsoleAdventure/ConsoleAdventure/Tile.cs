@@ -198,6 +198,10 @@ namespace ConsoleAdventure
                     FColor = ConsoleColor.DarkGray;
                     Passable = false;
                     break;
+                case ' ':
+                    Terrain = "Blank";
+                    Passable = true;
+                    break;
                     
             }
         }

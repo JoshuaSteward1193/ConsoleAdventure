@@ -8,11 +8,12 @@ namespace ConsoleAdventure
 {
     static class ScreenTransition
     {
-        static StringBuilder LeftLine = new StringBuilder();
-        static StringBuilder RightLine = new StringBuilder();
+        
 
         public static void Transition()
         {
+            StringBuilder LeftLine = new StringBuilder();
+            StringBuilder RightLine = new StringBuilder();
             int index = 0;
             bool leftAlign = true;
             LeftLine.Append(' ', Console.WindowWidth - 1);

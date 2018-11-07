@@ -19,25 +19,27 @@ namespace ConsoleAdventure
             enemy = e;
             SetBattlefield(Program.currentMap.TerrainData[e.Position.YVal, e.Position.XVal].Terrain);
             CombatMessage();
+            Console.ReadKey(true);
+            Console.Clear();
+            ScreenTransition.Transition();
             Combat();
         } 
 
         private void Combat()
         {
             Console.Clear();
-            bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(Program.p1);
+            bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(player);
+            bField.TerrainData[bField.SpawnPoints[1].YVal, bField.SpawnPoints[1].XVal].SpawnCharacter(enemy);
             //Main Print Loop
             while (true)
             {
                 Console.Clear();
                 PrintHeader();
-                PrintMaps.Print(bField.TerrainData, 4, 14, bField.SpawnPoints[0], true);
+                PrintMaps.Print(bField.TerrainData, 4, 7, bField.SpawnPoints[0], true);
                 Console.ReadKey();
             }
-            
-            
-
         }
+
         private void CombatMessage()
         {
             Console.WriteLine($"Starting combat between the player, {player.Name}, and {enemy.Name} the {enemy.Type}");
@@ -58,6 +60,10 @@ namespace ConsoleAdventure
                     bField = GameData.AllBFields[0];
                     break;
             }
+        }
+        private void PrintCombat()
+        {
+            
         }
         
     }
