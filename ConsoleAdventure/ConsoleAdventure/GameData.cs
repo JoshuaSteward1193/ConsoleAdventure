@@ -20,7 +20,7 @@ namespace ConsoleAdventure
             //LOAD MAPS
             AllMaps.Add(new Map("Test Room 1", LoadTerrain("TestRoom1"), new Coordinate(2, 2)));
             AllMaps.Add(new Map("Goblin Lair", LoadTerrain("GoblinLair1"), new Coordinate(3, 8)));
-            AllMaps.Add(new Map("StoryRoom1", LoadTerrain("StoryRoom1"), new Coordinate(5, 17)));
+            AllMaps.Add(new Map("StoryRoom1", LoadTerrain("StoryRoom1"), new Coordinate(16, 50)));
 
             AllBFields.Add(new Battlefield("Battlefield 1", LoadTerrain("Battlefield1"), new Coordinate(3, 4)));
             AllBFields[0].SpawnPoints.Add(new Coordinate(3, 8));
@@ -72,15 +72,18 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[12, 12].Thing = new MushroomColonyObject();
             AllMaps[0].TerrainData[10, 15].Thing = new MushroomColonyObject();
 
-            AllMaps[2].TerrainData[13, 21].Thing = new LockedDoorObject("Locked Door", "This is a heavy wooden door.", 1);
-            AllMaps[2].TerrainData[7, 17].Thing = new Interactable("Cell Door", "This door is old and decaying.", SpecialChars.Door, 1, 1, 0, ConsoleColor.DarkYellow);
-            AllMaps[2].TerrainData[9, 56].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
-            AllMaps[2].TerrainData[11, 56].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new DoorKey("Rusty Key", "It looks like it's been well-used.", 1)));
+            AllMaps[2].TerrainData[22, 50].Thing = new LockedDoorObject("Locked Door", "This is a heavy wooden door.", 1);
+            AllMaps[2].TerrainData[18, 50].Thing = new Interactable("Cell Door", "This door is old and decaying.", SpecialChars.Door, 1, 1, 0, ConsoleColor.DarkYellow);
+            AllMaps[2].TerrainData[19, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
+            AllMaps[2].TerrainData[21, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new DoorKey("Rusty Key", "It looks like it's been well-used.", 1)));
+            AllMaps[2].TerrainData[23, 55].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
             
 
             //ADD CHARACTERS
             AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, 50, AllMaps[0]));
-            AllMaps[2].TerrainData[20, 21].SpawnCharacter(new GoblinEnemy("Bokka", 5, AllMaps[2]));
+            AllMaps[2].TerrainData[26, 50].SpawnCharacter(new GoblinEnemy("Bokka", 5, AllMaps[2]));
+            AllMaps[2].TerrainData[31, 55].SpawnCharacter(new GoblinEnemy("Thugga", 5, AllMaps[2]));
+            AllMaps[2].TerrainData[26, 55].SpawnCharacter(new GoblinEnemy("Feg", 5, AllMaps[2]));
         }
         public static Tile[,] LoadTerrain(string textFile)
         {

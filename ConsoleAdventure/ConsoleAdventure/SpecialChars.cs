@@ -9,7 +9,13 @@ namespace ConsoleAdventure
     class SpecialChars
     {
         public static char Cross = '\u00b1';
-        public static char MaybeGrass1 = '\u02d2';
+        public static char Grass1 = '\u08f0';
+        public static char Grass2 = '\u08f1';
+        public static char Grass3 = '\u08f2';
+        public static char Grass4 = '\u08f3';
+        public static char Grass5 = '\u08f4';
+        public static char Grass6 = '\u08f5';
+        public static char Grass7 = '\u08f6';
         public static char BigTree1 = '\u01EA';
         public static char SmallTree1 = '\u01EB';
         public static char Bush = '\u0239';

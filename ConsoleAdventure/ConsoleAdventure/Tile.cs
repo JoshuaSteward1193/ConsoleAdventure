@@ -138,14 +138,39 @@ namespace ConsoleAdventure
                     Passable = false;
                     break;
                 case ',':
-                    Icon = SpecialChars.MaybeGrass1;
+                    int grass = Program.rand.Next(0, 7);
+                    switch (grass)
+                    {
+                        case 0:
+                            Icon = SpecialChars.Grass1;
+                            break;
+                        case 1:
+                            Icon = SpecialChars.Grass2;
+                            break;
+                        case 2:
+                            Icon = SpecialChars.Grass3;
+                            break;
+                        case 3:
+                            Icon = SpecialChars.Grass4;
+                            break;
+                        case 4:
+                            Icon = SpecialChars.Grass5;
+                            break;
+                        case 5:
+                            Icon = SpecialChars.Grass6;
+                            break;
+                        case 6:
+                            Icon = SpecialChars.Grass7;
+                            break;
+                    }
                     Terrain = "Grassy Plains";
                     FColor = ConsoleColor.Green;                    
                     Passable = true;                    
                     break;                
                 case 'X':
                     Terrain = "Stone Wall";
-                    FColor = ConsoleColor.Gray;
+                    Icon = SpecialChars.SolidMaterial;
+                    FColor = ConsoleColor.DarkGray;
                     Passable = false;
                     break;
                 case '=':
