@@ -12,7 +12,7 @@ namespace ConsoleAdventure
         Enemy enemy;
 
         Battlefield bField;
-        
+        string sideBuffer;
         public CombatManager(Player p, Enemy e)
         {
             player = p;
@@ -21,6 +21,16 @@ namespace ConsoleAdventure
             CombatMessage();
             Console.ReadKey(true);
             Console.Clear();
+
+            //Set the size of the side buffer
+            Program.SideBuffer = "";
+            int bufferLength = (Console.WindowWidth - 13) / 2;
+            for(int i = 0; i < bufferLength; i++)
+            {
+                Program.SideBuffer += " ";
+            }
+
+            //Play screen transition
             ScreenTransition.Transition();
             Combat();
         } 
@@ -34,8 +44,10 @@ namespace ConsoleAdventure
             while (true)
             {
                 Console.Clear();
-                PrintHeader();
+                Console.WriteLine();
+                Console.WriteLine();
                 PrintMaps.Print(bField.TerrainData, 4, 7, bField.SpawnPoints[0], true);
+                PrintHeader();
                 Console.ReadKey();
             }
         }
@@ -47,7 +59,7 @@ namespace ConsoleAdventure
         private void PrintHeader()
         {
             Console.WriteLine("");
-            Console.WriteLine($"     {player.Name}                                   {enemy.Name} the {enemy.Type}");
+            Console.WriteLine($"                 {player.Name}                                {enemy.Name} the {enemy.Type}");
         }
         private void SetBattlefield(string type)
         {

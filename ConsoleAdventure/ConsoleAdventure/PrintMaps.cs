@@ -8,7 +8,7 @@ namespace ConsoleAdventure
 {
     static class PrintMaps
     {
-        public static string SideBuffer = "                       ";
+        //public static string SideBuffer = "                       ";
         public static void Print(Tile[,] _tiles, int YBuffer, int XBuffer, Coordinate _center, bool color)
         {
             ConsoleColor targetColor = ConsoleColor.Black;
@@ -46,7 +46,7 @@ namespace ConsoleAdventure
                     j = 0;
                     jOffset -= (_center.XVal - jOffset);
                 }
-                Console.Write(SideBuffer);
+                Console.Write(Program.SideBuffer);
                 sb.Clear();
                 while (j < _tiles.GetLength(1) && j < _center.XVal + jOffset)
                 {

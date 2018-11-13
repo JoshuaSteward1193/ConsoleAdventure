@@ -64,9 +64,6 @@ namespace ConsoleAdventure
                 CharacterAI();
 
                 DrawEverything();
-				               
-
-				
                 
                 PlayerInput();
 
@@ -77,6 +74,14 @@ namespace ConsoleAdventure
         {
             Console.Clear();
             sw.Start();
+
+            //Set the side buffer
+            SideBuffer = "";
+            int bufferLength = (Console.WindowWidth - XBuffer * 2) / 2;
+            for (int i = 0; i < bufferLength; i++)
+            {
+                SideBuffer += " ";
+            }
             PrintHeader();            
             PrintMap(PrintColor);
             sw.Stop();
