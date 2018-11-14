@@ -46,8 +46,10 @@ namespace ConsoleAdventure
                 Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine();
+                
                 PrintMaps.Print(bField.TerrainData, 4, 7, bField.SpawnPoints[0], true);
                 PrintHeader();
+
                 Console.ReadKey();
             }
         }
@@ -58,8 +60,18 @@ namespace ConsoleAdventure
         }
         private void PrintHeader()
         {
-            Console.WriteLine("");
-            Console.WriteLine($"                 {player.Name}                                {enemy.Name} the {enemy.Type}");
+            int playerNameStartPos = Program.SideBuffer.Length - player.Name.Length - 5;
+            int enemyNameStartPos = Program.SideBuffer.Length + bField.TerrainData.GetLength(1) + 5;
+            string playerHealth = $"{player.Health} / {player.MaxHealth}";
+            string enemyHealth = $"{enemy.Health} / {enemy.MaxHealth}";
+            Console.SetCursorPosition(playerNameStartPos, 7);            
+            Console.Write(player.Name);
+            Console.SetCursorPosition(playerNameStartPos - (playerHealth.Length - player.Name.Length), 8);
+            Console.Write(playerHealth);
+            Console.SetCursorPosition(enemyNameStartPos, 7);
+            Console.Write(enemy.Name);
+            Console.SetCursorPosition(enemyNameStartPos, 8);
+            Console.Write(enemyHealth);
         }
         private void SetBattlefield(string type)
         {
