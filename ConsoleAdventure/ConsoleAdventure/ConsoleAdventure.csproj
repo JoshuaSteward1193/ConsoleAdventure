@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Battlefield.cs" />
     <Compile Include="CombatManager.cs" />
+    <Compile Include="ConsoleLockdown.cs" />
     <Compile Include="GameItems\AppleItem.cs" />
     <Compile Include="GameObjects\ChestObject.cs" />
     <Compile Include="DoorKey.cs" />

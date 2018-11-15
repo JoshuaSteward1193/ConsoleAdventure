@@ -44,6 +44,7 @@ namespace ConsoleAdventure
 			Console.OutputEncoding = Encoding.UTF8;
             Console.WindowWidth = 91;
             Console.WindowHeight = 33;
+            ConsoleLockdown.Lockdown();
 
             //ASTAR PATHFINDING TEST - BROKEN
             //currentMap.AICharacters[0].Path = Pathfinding.AStar(currentMap.TerrainData[currentMap.AICharacters[0].Position.YVal,currentMap.AICharacters[0].Position.XVal], currentMap.TerrainData[10, 10], currentMap);
@@ -100,85 +101,7 @@ namespace ConsoleAdventure
         }
 		private static void PrintMap(bool color)
 		{
-            PrintMaps.Print(currentMap.TerrainData, YBuffer, XBuffer, p1.Position, color);
-            /*
-			ConsoleColor targetColor = ConsoleColor.Black;
-			StringBuilder sb = new StringBuilder();
-			int i;
-			int iOffset = YBuffer;
-			int j;
-			int jOffset = XBuffer;
-			if (p1.Position.YVal - iOffset >= 0)
-			{
-				i = p1.Position.YVal - iOffset;
-				if (i >= currentMap.TerrainData.GetLength(0) - iOffset * 2)
-				{
-					i = currentMap.TerrainData.GetLength(0) - iOffset * 2;
-				}
-			}
-			else
-			{
-				i = 0;
-				iOffset -= (p1.Position.YVal - iOffset);
-			}
-			while (i < currentMap.TerrainData.GetLength(0) && i < p1.Position.YVal + iOffset)
-			{
-				jOffset = XBuffer;
-				if (p1.Position.XVal - jOffset >= 0)
-				{
-					j = p1.Position.XVal - jOffset;
-					if (j >= currentMap.TerrainData.GetLength(1) - jOffset * 2)
-					{
-						j = currentMap.TerrainData.GetLength(1) - jOffset * 2;
-					}
-				}
-				else
-				{
-					j = 0;
-					jOffset -= (p1.Position.XVal - jOffset);
-				}
-                Console.Write(SideBuffer);
-				sb.Clear();
-				while (j < currentMap.TerrainData.GetLength(1) && j < p1.Position.XVal + jOffset)
-				{
-					char target = currentMap.TerrainData[i, j].Icon;
-					if (targetColor != currentMap.TerrainData[i, j].FColor) targetColor = currentMap.TerrainData[i, j].FColor;
-					if (sb.Length == 0)
-					{
-						sb.Append(target);
-					}
-					else
-					{
-						if (sb[sb.Length - 1] == target)
-						{
-							sb.Append(target);
-						}
-						else
-						{
-							Console.Write(sb);
-							sb.Clear();
-							sb.Append(target);
-							if (targetColor != currentMap.TerrainData[i, j].FColor && color)
-							{
-								targetColor = currentMap.TerrainData[i, j].FColor;
-					    	}
-						}
-					}
-
-					if (color)
-					{
-						if (targetColor != Console.ForegroundColor)
-                        {
-                            Console.ForegroundColor = currentMap.TerrainData[i, j].FColor;
-                        }							
-					}
-					j++;
-				}
-				Console.WriteLine(sb);
-				i++;
-			}
-			Console.ForegroundColor = ConsoleColor.Gray;
-            */
+            PrintMaps.Print(currentMap.TerrainData, YBuffer, XBuffer, p1.Position, color);            
 		}          
 		
 		private static void BadPrint(bool color)
@@ -340,5 +263,6 @@ namespace ConsoleAdventure
 
             }
 		}
+        
 	}
 }

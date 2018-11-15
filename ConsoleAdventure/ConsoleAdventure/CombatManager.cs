@@ -72,6 +72,12 @@ namespace ConsoleAdventure
             Console.Write(enemy.Name);
             Console.SetCursorPosition(enemyNameStartPos, 8);
             Console.Write(enemyHealth);
+
+            Console.SetCursorPosition(5, 10);
+            for(int i = 0; i < Console.WindowWidth - 10; i++)
+            {
+                Console.Write("=");
+            }
         }
         private void SetBattlefield(string type)
         {
