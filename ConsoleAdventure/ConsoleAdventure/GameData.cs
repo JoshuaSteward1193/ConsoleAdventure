@@ -14,6 +14,7 @@ namespace ConsoleAdventure
         public static List<Battlefield> AllBFields = new List<Battlefield>();
         public static List<Transition> Transitions = new List<Transition>();
         public static List<Interactable> AllInteractables = new List<Interactable>();
+        public static List<CombatMove> AllCombatMoves = new List<CombatMove>();
 
         public static void DataBuild()
         {
@@ -84,6 +85,12 @@ namespace ConsoleAdventure
             AllMaps[2].TerrainData[26, 50].SpawnCharacter(new GoblinEnemy("Bokka", 5, AllMaps[2]));
             AllMaps[2].TerrainData[31, 55].SpawnCharacter(new GoblinEnemy("Thugga", 5, AllMaps[2]));
             AllMaps[2].TerrainData[26, 55].SpawnCharacter(new GoblinEnemy("Feg", 5, AllMaps[2]));
+
+            //ADD COMBAT MOVES
+            AllCombatMoves.Add(new CombatMove("Punch", "curl your hand into a fist and punch", "curls its hand into a fist and punches", 0.9, 0.9, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.15, 0.8, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.2, 0.8, CombatMove.SkillType.Club));
         }
         public static Tile[,] LoadTerrain(string textFile)
         {
