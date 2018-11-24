@@ -78,7 +78,14 @@ namespace ConsoleAdventure
             AllMaps[2].TerrainData[19, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
             AllMaps[2].TerrainData[21, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new DoorKey("Rusty Key", "It looks like it's been well-used.", 1)));
             AllMaps[2].TerrainData[23, 55].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
-            
+
+            //ADD COMBAT MOVES
+            AllCombatMoves.Add(new CombatMove("Punch", "curl your hand into a fist and punch", "curls its hand into a fist and punches", 0.9, 0.9, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.15, 0.8, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.2, 0.8, CombatMove.SkillType.Club));
+            AllCombatMoves.Add(new CombatMove("Smack", "wind up and deliver a horizontal blow", "winds up and delivers a horizontal blow", 1.0, 0.9, CombatMove.SkillType.Club));
+        
 
             //ADD CHARACTERS
             AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, 50, AllMaps[0]));
@@ -91,6 +98,7 @@ namespace ConsoleAdventure
             AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.15, 0.8, CombatMove.SkillType.Fist));
             AllCombatMoves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
             AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.2, 0.8, CombatMove.SkillType.Club));
+            AllCombatMoves.Add(new CombatMove("Smack", "wind up and deliver a horizontal blow", "winds up and delivers a horizontal blow", 1.0, 0.9, CombatMove.SkillType.Club));
         }
         public static Tile[,] LoadTerrain(string textFile)
         {

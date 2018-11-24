@@ -11,6 +11,7 @@ namespace ConsoleAdventure
         public string Type { get; set; }
         public int AreaRange { get; set; }
         public int LOSRange { get; set; }
+        public List<CombatMove> Actions = new List<CombatMove>();
         public Enemy(string name,int _areaRange, int _losRange, string type, char ico, ConsoleColor col, int hp, Map map) : base(name, ico, col, hp, map)
         {
             Type = type;

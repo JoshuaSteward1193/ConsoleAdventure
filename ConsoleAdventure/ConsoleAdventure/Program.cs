@@ -36,8 +36,11 @@ namespace ConsoleAdventure
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
-			//Stopwatch for debug purposes
-			sw = new Stopwatch();
+            p1.AssignedMoves.Add(GameData.AllCombatMoves[0]);
+            p1.AssignedMoves.Add(GameData.AllCombatMoves[1]);
+            p1.AssignedMoves.Add(GameData.AllCombatMoves[2]);
+            //Stopwatch for debug purposes
+            sw = new Stopwatch();
 
 			currentMap.TerrainData[currentMap.SpawnPoints[0].YVal, currentMap.SpawnPoints[0].XVal].SpawnCharacter(p1);
 			Console.CursorVisible = false;

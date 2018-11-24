@@ -11,12 +11,61 @@ namespace ConsoleAdventure
         Player player;
         Enemy enemy;
 
-        Battlefield bField;
-        string sideBuffer;
+        string selection1;
+        string choice1;
+        string selection2;
+        string choice2;
+        string selection3;
+        string choice3;
+
+        private int selectedChoice;
+        int SelectedChoice
+        {
+            get
+            {
+                return selectedChoice;
+            }
+            set
+            {
+                selectedChoice = value;
+                if (selectedChoice < 0) selectedChoice = 0;
+                if (selectedChoice > 2) selectedChoice = 2;
+                switch (selectedChoice)
+                {
+                    case 0:
+                        selection1 = ">";
+                        selection2 = " ";
+                        selection3 = " ";
+                        break;
+                    case 1:
+                        selection1 = " ";
+                        selection2 = ">";
+                        selection3 = " ";
+                        break;
+                    case 2:
+                        selection1 = " ";
+                        selection2 = " ";
+                        selection3 = ">";
+                        break;
+                }
+            }
+        }
+
+        Battlefield bField;        
         public CombatManager(Player p, Enemy e)
         {
             player = p;
-            enemy = e;
+            enemy = e;            
+
+            selection1 = " ";
+            choice1 = $"{selection1}   {player.AssignedMoves[0].Name}";
+            selection2 = " ";
+            choice2 = $"{selection2}   {player.AssignedMoves[1].Name}";
+            selection3 = " ";
+            choice3 = $"{selection3}   {player.AssignedMoves[2].Name}";
+
+            SelectedChoice = 0;
+
             SetBattlefield(Program.currentMap.TerrainData[e.Position.YVal, e.Position.XVal].Terrain);
             CombatMessage();
             Console.ReadKey(true);
@@ -40,6 +89,7 @@ namespace ConsoleAdventure
             Console.Clear();
             bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(player);
             bField.TerrainData[bField.SpawnPoints[1].YVal, bField.SpawnPoints[1].XVal].SpawnCharacter(enemy);
+           
             //Main Print Loop
             while (true)
             {
@@ -78,6 +128,13 @@ namespace ConsoleAdventure
             {
                 Console.Write("=");
             }
+            Console.SetCursorPosition(Program.SideBuffer.Length, 12);
+            Console.Write(choice1);
+            Console.SetCursorPosition(Program.SideBuffer.Length, 14);
+            Console.Write(choice2);
+            Console.SetCursorPosition(Program.SideBuffer.Length, 16);
+            Console.Write(choice3);
+
         }
         private void SetBattlefield(string type)
         {
