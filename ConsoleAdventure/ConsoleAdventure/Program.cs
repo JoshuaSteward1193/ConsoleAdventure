@@ -23,6 +23,8 @@ namespace ConsoleAdventure
 		//USER PREFERENCES
 		public static bool PrintColor = true;
 		public static bool DebugGame = true;
+        public static int ConsoleWidth = 91;
+        public static int ConsoleHeight = 33;
 		public static int YBuffer = 9; //Should be odd number
 		public static int XBuffer = 21; //Should be odd number
         public static string SideBuffer = "                       ";
@@ -45,8 +47,9 @@ namespace ConsoleAdventure
 			currentMap.TerrainData[currentMap.SpawnPoints[0].YVal, currentMap.SpawnPoints[0].XVal].SpawnCharacter(p1);
 			Console.CursorVisible = false;
 			Console.OutputEncoding = Encoding.UTF8;
-            Console.WindowWidth = 91;
-            Console.WindowHeight = 33;
+            Console.WindowWidth = ConsoleWidth;
+            Console.WindowHeight = ConsoleHeight;
+            Console.SetBufferSize(ConsoleWidth, ConsoleHeight);
             ConsoleLockdown.Lockdown();
 
             //ASTAR PATHFINDING TEST - BROKEN
