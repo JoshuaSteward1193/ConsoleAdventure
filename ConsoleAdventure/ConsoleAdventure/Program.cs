@@ -225,8 +225,7 @@ namespace ConsoleAdventure
                     }
                     else //if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(Enemy))
                     {
-                        CombatManager combatManager = new CombatManager(p1, currentMap.TerrainData[targetY, targetX].Resident as Enemy);
-                        
+                        CombatManager combatManager = new CombatManager(p1, currentMap.TerrainData[targetY, targetX].Resident as Enemy);                        
                     }
                 }
                 else

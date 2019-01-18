@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
@@ -10,6 +7,9 @@ namespace ConsoleAdventure
     {
         public string Name { get; set; }
         public char Icon { get; set; }
+
+        //COMBAT STATS
+        public int Level { get; set; }
         private int health;
         public int Health
         {
@@ -37,19 +37,24 @@ namespace ConsoleAdventure
                 Health = maxHealth;
             }
         }
+        public int Strength { get; set; }
+        public int Vigor { get; set; }
+
         virtual public Coordinate Position { get; set; }
         public ConsoleColor Color { get; set; }
         public Map MyMap { get; set; }
         public List<Tile> Path = new List<Tile>();
 
-        public Character(string name, char ico, ConsoleColor col, int hp, Map map)
+        public Character(string name, char ico, ConsoleColor col, int lvl, int hp, int str, int vig, Map map)
         {
+            Level = lvl;
             Name = name;
             Icon = ico;
             MaxHealth = hp;            
             Color = col;
             MyMap = map;
-
+            Strength = str;
+            Vigor = vig;
             Type type = this.GetType();
 
 

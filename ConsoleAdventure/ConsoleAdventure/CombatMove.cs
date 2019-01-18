@@ -11,7 +11,7 @@ namespace ConsoleAdventure
         public enum SkillType { Fist, Longsword, Club}
         public string Name { get; set; }
         public string PActionText { get; set; }
-        public string EAcgtionText { get; set; }
+        public string EActionText { get; set; }
         public double DamageMod { get; set; }
         public double AccuracyMod { get; set; }
         public SkillType MoveType { get; set; }
@@ -20,7 +20,7 @@ namespace ConsoleAdventure
         {
             Name = _name;
             PActionText = _p_action;
-            EAcgtionText = _e_action;
+            EActionText = _e_action;
             DamageMod = _damage;
             AccuracyMod = _accuracy;
             MoveType = _type;

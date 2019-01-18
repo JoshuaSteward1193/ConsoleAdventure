@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
@@ -11,60 +7,24 @@ namespace ConsoleAdventure
         Player player;
         Enemy enemy;
 
-        string selection1;
         string choice1;
-        string selection2;
         string choice2;
-        string selection3;
         string choice3;
-
-        private int selectedChoice;
-        int SelectedChoice
-        {
-            get
-            {
-                return selectedChoice;
-            }
-            set
-            {
-                selectedChoice = value;
-                if (selectedChoice < 0) selectedChoice = 0;
-                if (selectedChoice > 2) selectedChoice = 2;
-                switch (selectedChoice)
-                {
-                    case 0:
-                        selection1 = ">";
-                        selection2 = " ";
-                        selection3 = " ";
-                        break;
-                    case 1:
-                        selection1 = " ";
-                        selection2 = ">";
-                        selection3 = " ";
-                        break;
-                    case 2:
-                        selection1 = " ";
-                        selection2 = " ";
-                        selection3 = ">";
-                        break;
-                }
-            }
-        }
+        int selection;
+        bool playerTurn;
 
         Battlefield bField;        
         public CombatManager(Player p, Enemy e)
         {
             player = p;
-            enemy = e;            
+            enemy = e;        
 
-            selection1 = " ";
-            choice1 = $"{selection1}   {player.AssignedMoves[0].Name}";
-            selection2 = " ";
-            choice2 = $"{selection2}   {player.AssignedMoves[1].Name}";
-            selection3 = " ";
-            choice3 = $"{selection3}   {player.AssignedMoves[2].Name}";
-
-            SelectedChoice = 0;
+            //Set initial variables
+            choice1 = $"{player.AssignedMoves[0].Name}";
+            choice2 = $"{player.AssignedMoves[1].Name}";
+            choice3 = $"{player.AssignedMoves[2].Name}";
+            selection = 0;
+            playerTurn = true;
 
             SetBattlefield(Program.currentMap.TerrainData[e.Position.YVal, e.Position.XVal].Terrain);
             CombatMessage();
@@ -91,7 +51,7 @@ namespace ConsoleAdventure
             bField.TerrainData[bField.SpawnPoints[1].YVal, bField.SpawnPoints[1].XVal].SpawnCharacter(enemy);
            
             //Main Print Loop
-            while (true)
+            while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.Clear();
                 Console.WriteLine();
@@ -100,8 +60,78 @@ namespace ConsoleAdventure
                 PrintMaps.Print(bField.TerrainData, 4, 7, bField.SpawnPoints[0], true);
                 PrintHeader();
 
-                Console.ReadKey();
+                ConsoleKey key;
+
+                //PLAYER TURN
+                if (playerTurn)
+                {
+                    PrintPlayerOptions();
+                    key = Console.ReadKey(true).Key;
+                    switch (key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            if (selection < 3 && selection > 0) selection--;
+                            break;
+                        case ConsoleKey.DownArrow:
+                            if (selection < 2 && selection > -1) selection++;
+                            break;
+                        case ConsoleKey.Enter:
+                            switch (selection)
+                            {
+                                case 0:
+                                    PrintPlayerTurn(player.AssignedMoves[0]);
+                                    break;
+                                case 1:
+                                    PrintPlayerTurn(player.AssignedMoves[1]);
+                                    break;
+                                case 2:
+                                    PrintPlayerTurn(player.AssignedMoves[2]);
+                                    break;
+                            }
+                            playerTurn = false;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                //ENEMY TURN
+                else
+                {
+                    PrintEnemyOptions();
+                    key = Console.ReadKey(true).Key;
+                    switch (key)
+                    {
+                        case ConsoleKey.Enter:
+                            switch (enemy.CombatChoice())
+                            {
+                                case 1:
+                                    PrintEnemyTurn(enemy.StandardMove1);
+                                    break;
+                                case 2:
+                                    PrintEnemyTurn(enemy.StandardMove2);
+                                    break;
+                                case 3:
+                                    PrintEnemyTurn(enemy.PowerMove1);
+                                    break;
+                                case 4:
+                                    PrintEnemyTurn(enemy.SupportMove1);
+                                    break;
+                                default:
+                                    Console.WriteLine("Error with enemy AI");
+                                    break;
+                            }
+                            playerTurn = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }                
             }
+            Console.SetCursorPosition(Program.SideBuffer.Length, 19);
+            if (player.Health > 0) Console.Write("You won!");
+            else Console.Write("You lost!");
+            Console.ReadKey(true);
+            Console.Clear();
         }
 
         private void CombatMessage()
@@ -122,19 +152,45 @@ namespace ConsoleAdventure
             Console.Write(enemy.Name);
             Console.SetCursorPosition(enemyNameStartPos, 8);
             Console.Write(enemyHealth);
-
             Console.SetCursorPosition(5, 10);
-            for(int i = 0; i < Console.WindowWidth - 10; i++)
+            for (int i = 0; i < Console.WindowWidth - 10; i++)
             {
                 Console.Write("=");
             }
-            Console.SetCursorPosition(Program.SideBuffer.Length, 12);
-            Console.Write(choice1);
+        }
+        private void PrintPlayerOptions()
+        {           
+            Console.SetCursorPosition(Program.SideBuffer.Length, 11);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("It is your turn.");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(Program.SideBuffer.Length, 13);
+            if (selection == 0)
+            {
+                Console.Write($">  {choice1}");
+            }
+            else Console.Write($"   {choice1}");
             Console.SetCursorPosition(Program.SideBuffer.Length, 14);
-            Console.Write(choice2);
-            Console.SetCursorPosition(Program.SideBuffer.Length, 16);
-            Console.Write(choice3);
-
+            if (selection == 1)
+            {
+                Console.Write($">  {choice2}");
+            }
+            else Console.Write($"   {choice2}");
+            Console.SetCursorPosition(Program.SideBuffer.Length, 15);
+            if (selection == 2)
+            {
+                Console.Write($">  {choice3}");
+            }
+            else Console.Write($"   {choice3}");
+        }
+        private void PrintEnemyOptions()
+        {
+            Console.SetCursorPosition(Program.SideBuffer.Length, 11);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"It is {enemy.Name}'s turn.");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(Program.SideBuffer.Length, 13);
+            Console.Write(">  Defend!");
         }
         private void SetBattlefield(string type)
         {
@@ -148,9 +204,46 @@ namespace ConsoleAdventure
                     break;
             }
         }
-        private void PrintCombat()
+        private int CalcDamage(CombatMove move, int aStrength, int dVigor)
         {
-            
+            double rawDamage = aStrength * move.DamageMod / (dVigor / 2.0);
+            if (rawDamage < 0) rawDamage = 1;
+            int damage = Convert.ToInt32(rawDamage);
+            return damage;
+        }
+        private void PrintEnemyTurn(CombatMove move)
+        {
+            Console.SetCursorPosition(Program.SideBuffer.Length, 17);
+            Console.Write($"{enemy.Name} {move.EActionText} you.");
+            Console.SetCursorPosition(Program.SideBuffer.Length, 18);
+            if(Program.rand.NextDouble() <= move.AccuracyMod)
+            {
+                int damage = CalcDamage(move, enemy.Strength, player.Vigor);
+                Console.Write($"You take {damage}");
+                player.Health -= damage;
+            }
+            else
+            {
+                Console.Write($"{enemy.Name}'s attack misses you!");
+            }
+            Console.ReadKey(true);
+        }
+        private void PrintPlayerTurn(CombatMove move)
+        {
+            Console.SetCursorPosition(Program.SideBuffer.Length, 17);
+            Console.Write($"You {move.PActionText} {enemy.Name}.");
+            Console.SetCursorPosition(Program.SideBuffer.Length, 18);
+            if (Program.rand.NextDouble() <= move.AccuracyMod)
+            {
+                int damage = CalcDamage(move, player.Strength, enemy.Vigor);
+                Console.Write($"{enemy.Name} takes {damage}");
+                enemy.Health -= damage;
+            }
+            else
+            {
+                Console.Write($"Your attack misses {enemy.Name}!");
+            }
+            Console.ReadKey(true);
         }
         
     }

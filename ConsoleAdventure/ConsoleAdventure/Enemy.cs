@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
-    class Enemy : Character
+    abstract class Enemy : Character
     {
         public string Type { get; set; }
         public int AreaRange { get; set; }
-        public int LOSRange { get; set; }
-        public List<CombatMove> Actions = new List<CombatMove>();
-        public Enemy(string name,int _areaRange, int _losRange, string type, char ico, ConsoleColor col, int hp, Map map) : base(name, ico, col, hp, map)
+        public int LOSRange { get; set; }        
+
+        //Enemies have slots containing specific moves. The CombatChoice() method returns and int
+        //based on which move should be performed, and the CombatManager interprets the returned int 
+        //and determines which move should be performed.
+        public CombatMove StandardMove1;
+        public CombatMove StandardMove2;
+        public CombatMove PowerMove1;
+        public CombatMove SupportMove1;
+
+        public Enemy(string name,int _areaRange, int _losRange, string type, char ico, ConsoleColor col, int level, int hp, int str, int vig, Map map) : base(name, ico, col, level, hp, str, vig, map)
         {
             Type = type;
             AreaRange = _areaRange;
@@ -77,5 +85,7 @@ namespace ConsoleAdventure
 
             //CHECK NEARBY
         }
+        public abstract int CombatChoice();
+        public abstract void LevelScaler(int level);
     }
 }
