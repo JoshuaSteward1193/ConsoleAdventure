@@ -72,33 +72,33 @@ namespace ConsoleAdventure
             AllMaps[1].TerrainData[10, 5].Thing = new MushroomColonyObject();
             AllMaps[1].TerrainData[12, 12].Thing = new MushroomColonyObject();
             AllMaps[0].TerrainData[10, 15].Thing = new MushroomColonyObject();
+            
 
             AllMaps[2].TerrainData[22, 50].Thing = new LockedDoorObject("Locked Door", "This is a heavy slab of solid wood.", 1);
+            AllMaps[2].TerrainData[30, 58].Thing = new LockedDoorObject("Locked Door", "This is a heavy slab of solid wood.", 2);
+            AllMaps[2].TerrainData[30, 48].Thing = new LockedDoorObject("Locked Door", "This is a heavy slab of solid wood.", 2);
             AllMaps[2].TerrainData[18, 50].Thing = new Interactable("Cell Door", "This door is old and decaying.", SpecialChars.Door, 1, 1, 0, ConsoleColor.DarkYellow);
             AllMaps[2].TerrainData[19, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
             AllMaps[2].TerrainData[21, 60].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new DoorKey("Rusty Key", "It looks like it's been well-used.", 1)));
             AllMaps[2].TerrainData[23, 55].Thing = new ChestObject("Old Chest", "You open the lid on the chest.", false, new Inventory(new AppleItem(), new AppleItem(), new AppleItem(), new AppleItem()));
+            AllMaps[2].TerrainData[23, 59].Thing = new Interactable("Cook Fire", "A fire is burning merrily here.", '^', 1, 2, 1, ConsoleColor.Red);
+            AllMaps[2].TerrainData[29, 46].Thing = new ChestObject("Old Barrel", "You peek down into the barrel", false, new Inventory(new Weapon("Short Sword", "A short blade. Probably used by goblins, as well as against them.", 5, "sword")));
 
             //ADD COMBAT MOVES
             AllCombatMoves.Add(new CombatMove("Punch", "curl your hand into a fist and punch", "curls its hand into a fist and punches", 0.9, 0.9, CombatMove.SkillType.Fist));
-            AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.15, 0.8, CombatMove.SkillType.Fist));
+            AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.5, 0.7, CombatMove.SkillType.Fist));
             AllCombatMoves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
-            AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.2, 0.8, CombatMove.SkillType.Club));
-            AllCombatMoves.Add(new CombatMove("Smack", "wind up and deliver a horizontal blow", "winds up and delivers a horizontal blow", 1.0, 0.9, CombatMove.SkillType.Club));
-        
+            AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.5, 0.7, CombatMove.SkillType.Club));
+            AllCombatMoves.Add(new CombatMove("Smack", "wind up and deliver a horizontal blow to", "winds up and delivers a horizontal blow to", 1.0, 0.9, CombatMove.SkillType.Club));
 
             //ADD CHARACTERS
             AllMaps[0].TerrainData[5, 9].SpawnCharacter(new NPC("Hearst", SpecialChars.HatManRight, 50, AllMaps[0]));
-            AllMaps[2].TerrainData[26, 50].SpawnCharacter(new GoblinEnemy("Bokka", 1, AllMaps[2]));
-            AllMaps[2].TerrainData[31, 55].SpawnCharacter(new GoblinEnemy("Thugga", 1, AllMaps[2]));
+            AllMaps[2].TerrainData[26, 50].SpawnCharacter(new GoblinEnemy("Bokka", 2, AllMaps[2]));
+            AllMaps[2].TerrainData[31, 55].SpawnCharacter(new GoblinEnemy("Thugga", 2, AllMaps[2]));
             AllMaps[2].TerrainData[26, 55].SpawnCharacter(new GoblinEnemy("Feg", 2, AllMaps[2]));
-
-            //ADD COMBAT MOVES
-            AllCombatMoves.Add(new CombatMove("Punch", "curl your hand into a fist and punch", "curls its hand into a fist and punches", 0.9, 0.9, CombatMove.SkillType.Fist));
-            AllCombatMoves.Add(new CombatMove("Fist Strike", "rear back, and with all of your might you drive your fist into", "rears back, and drives its fist into", 1.15, 0.8, CombatMove.SkillType.Fist));
-            AllCombatMoves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
-            AllCombatMoves.Add(new CombatMove("Slam", "raise the club over your head, and bring it crashing down onto", "raises the club over its head, and brings it crashing down onto", 1.2, 0.8, CombatMove.SkillType.Club));
-            AllCombatMoves.Add(new CombatMove("Smack", "wind up and deliver a horizontal blow to", "winds up and delivers a horizontal blow to", 1.0, 0.9, CombatMove.SkillType.Club));
+            AllMaps[2].TerrainData[27, 66].SpawnCharacter(new GoblinEnemy("Harrak", 3, AllMaps[2]));
+            AllMaps[2].TerrainData[30, 60].SpawnCharacter(new GoblinEnemy("Rogald", 4, AllMaps[2], new DoorKey("Prison Key", "A solid-looking key. It probably opens most doors here.",2), false));           
+                     
         }
         public static Tile[,] LoadTerrain(string textFile)
         {

@@ -47,8 +47,8 @@ namespace ConsoleAdventure
         private void Combat()
         {
             Console.Clear();
-            bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(player);
-            bField.TerrainData[bField.SpawnPoints[1].YVal, bField.SpawnPoints[1].XVal].SpawnCharacter(enemy);
+            //bField.TerrainData[bField.SpawnPoints[0].YVal, bField.SpawnPoints[0].XVal].SpawnCharacter(player);
+            //bField.TerrainData[bField.SpawnPoints[1].YVal, bField.SpawnPoints[1].XVal].SpawnCharacter(enemy);
            
             //Main Print Loop
             while (player.Health > 0 && enemy.Health > 0)
@@ -128,15 +128,23 @@ namespace ConsoleAdventure
                 }                
             }
             Console.SetCursorPosition(Program.SideBuffer.Length, 19);
-            if (player.Health > 0) Console.Write("You won!");
-            else Console.Write("You lost!");
-            Console.ReadKey(true);
+            if (player.Health > 0)
+            {
+                Program.PrintCenterLine("You won!");
+                enemy.Die();
+                Console.ReadKey(true);               
+            }
+            else
+            {
+                Program.PrintCenterLine("You lost!");
+                Console.ReadKey(true);
+            }
             Console.Clear();
         }
 
         private void CombatMessage()
         {
-            Console.WriteLine($"Starting combat between the player, {player.Name}, and {enemy.Name} the {enemy.Type}");
+            Program.PrintCenterLine($"Starting combat between the player, {player.Name}, and {enemy.Name} the {enemy.Type}");
         }
         private void PrintHeader()
         {
@@ -162,7 +170,7 @@ namespace ConsoleAdventure
         {           
             Console.SetCursorPosition(Program.SideBuffer.Length, 11);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("It is your turn.");
+            Program.PrintCenterLine("It is your turn.");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(Program.SideBuffer.Length, 13);
             if (selection == 0)
@@ -187,7 +195,7 @@ namespace ConsoleAdventure
         {
             Console.SetCursorPosition(Program.SideBuffer.Length, 11);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write($"It is {enemy.Name}'s turn.");
+            Program.PrintCenterLine($"It is {enemy.Name}'s turn.");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(Program.SideBuffer.Length, 13);
             Console.Write(">  Defend!");
@@ -213,35 +221,35 @@ namespace ConsoleAdventure
         }
         private void PrintEnemyTurn(CombatMove move)
         {
-            Console.SetCursorPosition(Program.SideBuffer.Length, 17);
-            Console.Write($"{enemy.Name} {move.EActionText} you.");
-            Console.SetCursorPosition(Program.SideBuffer.Length, 18);
+            Console.SetCursorPosition(Program.SideBuffer.Length / 2, 17);
+            Program.PrintCenterLine($"{enemy.Name} {move.EActionText} you.");
+            Console.SetCursorPosition(Program.SideBuffer.Length / 2, 18);
             if(Program.rand.NextDouble() <= move.AccuracyMod)
             {
                 int damage = CalcDamage(move, enemy.Strength, player.Vigor);
-                Console.Write($"You take {damage}");
+                Program.PrintCenterLine($"You take {damage} points of damage.");
                 player.Health -= damage;
             }
             else
             {
-                Console.Write($"{enemy.Name}'s attack misses you!");
+                Program.PrintCenterLine($"{enemy.Name}'s attack misses you!");
             }
             Console.ReadKey(true);
         }
         private void PrintPlayerTurn(CombatMove move)
         {
-            Console.SetCursorPosition(Program.SideBuffer.Length, 17);
-            Console.Write($"You {move.PActionText} {enemy.Name}.");
-            Console.SetCursorPosition(Program.SideBuffer.Length, 18);
+            Console.SetCursorPosition(Program.SideBuffer.Length / 2, 17);
+            Program.PrintCenterLine($"You {move.PActionText} {enemy.Name}.");
+            Console.SetCursorPosition(Program.SideBuffer.Length / 2, 18);
             if (Program.rand.NextDouble() <= move.AccuracyMod)
             {
                 int damage = CalcDamage(move, player.Strength, enemy.Vigor);
-                Console.Write($"{enemy.Name} takes {damage}");
+                Program.PrintCenterLine($"{enemy.Name} takes {damage} points of damage.");
                 enemy.Health -= damage;
             }
             else
             {
-                Console.Write($"Your attack misses {enemy.Name}!");
+                Program.PrintCenterLine($"Your attack misses {enemy.Name}!");
             }
             Console.ReadKey(true);
         }

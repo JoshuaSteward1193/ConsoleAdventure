@@ -8,14 +8,22 @@ namespace ConsoleAdventure
 {
     class GoblinEnemy : Enemy
     {
-        public GoblinEnemy(string name, int level, Map map) : base(name,4, 10, "Goblin", 'g', ConsoleColor.Yellow, level, 0, 0, 0, map)
+        public GoblinEnemy(string name, int level, Map map, bool roam = true) : base(name,4, 10, "Goblin", 'g', ConsoleColor.Yellow, level, 0, 0, 0, map, roam)
+        {
+            StandardMove1 = GameData.AllCombatMoves[4];
+            StandardMove2 = null;
+            PowerMove1 = GameData.AllCombatMoves[3];
+            SupportMove1 = null;            
+            LevelScaler(level);
+        }
+        public GoblinEnemy(string name, int level, Map map, GameItem specialLoot, bool roam = true) : base(name, 4, 10, "Goblin", 'g', ConsoleColor.Yellow, level, 0, 0, 0, map, roam)
         {
             StandardMove1 = GameData.AllCombatMoves[4];
             StandardMove2 = null;
             PowerMove1 = GameData.AllCombatMoves[3];
             SupportMove1 = null;
-            
             LevelScaler(level);
+            Loot.Add(specialLoot);
         }
 
         public override int CombatChoice()

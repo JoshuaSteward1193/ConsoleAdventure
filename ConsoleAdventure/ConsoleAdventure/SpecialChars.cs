@@ -32,5 +32,6 @@ namespace ConsoleAdventure
         public static char Columns = '\u0428';
         public static char Door = '\u05d7';
         public static char Chest = '\u039e';
+        public static char Spike = '\u0591';
     }
 }

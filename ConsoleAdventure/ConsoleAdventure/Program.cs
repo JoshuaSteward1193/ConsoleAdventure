@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleAdventure
 {
@@ -15,6 +12,7 @@ namespace ConsoleAdventure
 		public static int DrawTime;
 		public static Player p1;
         public static Inventory PlayerInventory;
+        public static Inventory PlayerArmory;
 		public static bool goodInput;
 		public static bool moveInput;
 
@@ -38,6 +36,7 @@ namespace ConsoleAdventure
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
+            PlayerArmory = new Inventory();
             p1.AssignedMoves.Add(GameData.AllCombatMoves[0]);
             p1.AssignedMoves.Add(GameData.AllCombatMoves[1]);
             p1.AssignedMoves.Add(GameData.AllCombatMoves[2]);
@@ -57,24 +56,43 @@ namespace ConsoleAdventure
 
 
             //INTRO
-            Console.WriteLine("Welcome to the adventure.");
-            Console.WriteLine("For best results, please right-click on the title bar and set your font to Courier New.");
-            Console.WriteLine("Thank you for playing my game.");
-			Console.WriteLine("Press anykey to begin");
+            PrintCenterLine("Welcome to the game.");
+            PrintCenterLine("For best results, please right-click on the title bar and set your font to Courier New.");
+            PrintCenterLine("Thank you for playing my game.");
+            PrintCenterLine("Press any key to begin");
 			Console.ReadKey();
+            Console.Clear();
 
+            //PLAYER SET UP
+            PrintCenterLine("Firstly, what name would you like your character to have?");
+            Console.CursorVisible = true;
+            p1.Name = Console.ReadLine();
+            Console.CursorVisible = false;
+            Console.Clear();
+            PrintCenterLine($"You shall henceforth and forever be known as {p1.Name}");
+            PrintCenterLine("Press the enter key to start the game.");
+            Console.ReadLine();
+            
+            //STORY BEGIN
             ScreenTransition.Transition();
+            PrintCenterLine("You aren't entirely sure what has happened, but you find yourself in a ruined prison.");
+            PrintCenterLine("Apparently, some goblins ambushed you while you were sleeping and imprisioned you.");            
+            PrintCenterLine("You probably didn't plan on your adventure starting like this, but here you are.");
+            PrintCenterLine("This is actually quite fortuitous, because these goblins are mere pests.");
+            PrintCenterLine("They shall serve as a whetstone upon which to sharpen your skills. A tutorial, as it were.");
+            Console.ReadLine();
+            Console.Clear();
+            DrawEverything();
 
 			//TURN CYCLE
 			while (p1.Health > 0)
-			{								
+			{
+                PlayerInput();                      
+
                 CharacterAI();
 
                 DrawEverything();
-                
-                PlayerInput();
-
-			}
+            }
 
 		}
         private static void DrawEverything()
@@ -108,8 +126,25 @@ namespace ConsoleAdventure
 		private static void PrintMap(bool color)
 		{
             PrintMaps.Print(currentMap.TerrainData, YBuffer, XBuffer, p1.Position, color);            
-		}          
-		
+		}
+        public static void PrintCenterText(string line)
+        {
+            int length = line.Length;
+            if (length < ConsoleWidth)
+            {
+                Console.SetCursorPosition((ConsoleWidth - length) / 2, Console.CursorTop);                
+            }
+            Console.Write(line);
+        }
+		public static void PrintCenterLine(string line)
+        {
+            int length = line.Length;
+            if (length < ConsoleWidth)
+            {
+                Console.SetCursorPosition((ConsoleWidth - length) / 2, Console.CursorTop);               
+            }
+            Console.Write(line + '\n');
+        }
 		private static void BadPrint(bool color)
 		{
 			/*
@@ -138,8 +173,8 @@ namespace ConsoleAdventure
         private static void PrintHeader()
         {
             Console.WriteLine();
-            Console.Write(SideBuffer);
-            Console.WriteLine($"Player: {p1.Name} | Health: {p1.Health}/{p1.MaxHealth} | Location: {currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal].Terrain}");
+            //Console.Write(SideBuffer);
+            PrintCenterLine($"Player: {p1.Name} | Health: {p1.Health}/{p1.MaxHealth} | Location: {currentMap.TerrainData[p1.Position.YVal, p1.Position.XVal].Terrain}");
             Console.WriteLine();
         }
 		
@@ -211,8 +246,8 @@ namespace ConsoleAdventure
 			{
                 if(currentMap.TerrainData[targetY, targetX].Thing != null)
                 {
-                    Console.WriteLine($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
-                        $"{currentMap.TerrainData[targetY, targetX].Thing.Description}.");
+                    PrintCenterLine($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
+                        $"{currentMap.TerrainData[targetY, targetX].Thing.Description} ");
                     currentMap.TerrainData[targetY, targetX].Thing.Interact();
                     Console.ReadKey(true);
                     DrawEverything();
@@ -221,17 +256,18 @@ namespace ConsoleAdventure
                 else if(currentMap.TerrainData[targetY, targetX].Resident != null)
                 {
                     if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(NPC)) {
-                        Console.WriteLine($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
+                        PrintCenterLine($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
                     }
                     else //if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(Enemy))
                     {
-                        CombatManager combatManager = new CombatManager(p1, currentMap.TerrainData[targetY, targetX].Resident as Enemy);                        
+                        CombatManager combatManager = new CombatManager(p1, currentMap.TerrainData[targetY, targetX].Resident as Enemy);
+                        DrawEverything();
                     }
                 }
                 else
                 {
                     
-                    Console.WriteLine($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
+                    PrintCenterLine($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
                 }
 				
 			}
@@ -243,7 +279,13 @@ namespace ConsoleAdventure
             {
                 foreach(Character c in currentMap.AICharacters)
                 {
-                    c.Wander();
+                    if (c.Roams)
+                    {
+                        if (c.Health > 0)
+                        {
+                            c.Wander();
+                        }
+                    }            
                 }
             }
             
@@ -265,8 +307,14 @@ namespace ConsoleAdventure
                     InventoryController.ShowInventory(PlayerInventory);
                     goodInput = true;
                     break;
+                case ConsoleKey.A:
+                    InventoryController.ShowInventory(PlayerArmory);
+                    goodInput = true;
+                    break;
+
 
             }
+            
 		}
         
 	}

@@ -46,12 +46,15 @@ namespace ConsoleAdventure
             switch (InteractionID)
             {
                 case 0:
-                    Console.WriteLine($"You kick the {Name}. Nothing happens.");
+                    Program.PrintCenterLine($"You kick the {Name}. Nothing happens.");
                     break;
                 case 1:
-                    Console.WriteLine("The door looks like it will fall down at any minute. You throw all your weight " +
+                    Program.PrintCenterLine("The door looks like it will fall down at any minute. You throw all your weight " +
                         "aginst the door. It falls outward under the blow, and you are free.");
                     DecreaseCharges();
+                    break;
+                case 2:
+                    Program.PrintCenterLine("You warm yourself by the fire. This might do more in a later build of the game.");
                     break;
             }
 

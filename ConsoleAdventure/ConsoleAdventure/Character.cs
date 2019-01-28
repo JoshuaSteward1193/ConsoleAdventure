@@ -7,6 +7,7 @@ namespace ConsoleAdventure
     {
         public string Name { get; set; }
         public char Icon { get; set; }
+        public bool Roams { get; set; }
 
         //COMBAT STATS
         public int Level { get; set; }
@@ -45,7 +46,7 @@ namespace ConsoleAdventure
         public Map MyMap { get; set; }
         public List<Tile> Path = new List<Tile>();
 
-        public Character(string name, char ico, ConsoleColor col, int lvl, int hp, int str, int vig, Map map)
+        public Character(string name, char ico, ConsoleColor col, int lvl, int hp, int str, int vig, Map map, bool roam)
         {
             Level = lvl;
             Name = name;
@@ -55,6 +56,7 @@ namespace ConsoleAdventure
             MyMap = map;
             Strength = str;
             Vigor = vig;
+            Roams = roam;
             Type type = this.GetType();
 
 

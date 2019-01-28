@@ -8,7 +8,7 @@ namespace ConsoleAdventure
 {
     class CombatMove
     {
-        public enum SkillType { Fist, Longsword, Club}
+        public enum SkillType { Fist, Longsword, Club, Shortsword}
         public string Name { get; set; }
         public string PActionText { get; set; }
         public string EActionText { get; set; }

@@ -26,13 +26,20 @@ namespace ConsoleAdventure
             LootChest();
         }
         public void LootChest()
-        {
-            Console.WriteLine(Description);
-            if (Stash.Items.Count == 0) Console.WriteLine("This chest is empty.");
+        {            
+            if (Stash.Items.Count == 0) Program.PrintCenterLine("This chest is empty.");
             for (int i = 0; i < Stash.Items.Count; i++)
-            {                
-                Console.WriteLine($"You got a {Stash.Items[i].Name}!");
-                Program.PlayerInventory.Items.Add(Stash.Items[i]);                
+            {
+                Program.PrintCenterLine($"You got a {Stash.Items[i].Name}!");
+                if(Stash.Items[i].GetType() == typeof(Weapon))
+                {
+                    Program.PlayerArmory.Items.Add(Stash.Items[i]);
+                }
+                else
+                {
+                    Program.PlayerInventory.Items.Add(Stash.Items[i]);
+                }
+                                
             }
             Stash.Items.Clear();
             

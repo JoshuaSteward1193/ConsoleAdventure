@@ -1,16 +1,3 @@
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.config
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.pdb
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csprojResolveAssemblyReference.cache
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.Properties.Resources.resources
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csproj.GenerateResource.Cache
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csproj.CoreCompileInputs.cache
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.pdb
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.manifest
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.application
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe.manifest
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.application
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.config
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.manifest
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.application
@@ -24,3 +11,16 @@ C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdve
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.application
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe
 C:\Users\Joshua S\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.pdb
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.config
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.application
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.exe
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Debug\ConsoleAdventure.pdb
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.Properties.Resources.resources
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csproj.GenerateResource.Cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csproj.CoreCompileInputs.cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.application
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.pdb
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csprojResolveAssemblyReference.cache
