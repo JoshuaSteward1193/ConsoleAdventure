@@ -23,4 +23,4 @@ C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdvent
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.application
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.exe
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.pdb
-C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csprojResolveAssemblyReference.cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Debug\ConsoleAdventure.csprojAssemblyReference.cache

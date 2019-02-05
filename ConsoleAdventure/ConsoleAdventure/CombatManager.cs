@@ -90,6 +90,10 @@ namespace ConsoleAdventure
                             }
                             playerTurn = false;
                             break;
+                        case ConsoleKey.I:
+                            InventoryController.ShowInventory(Program.PlayerInventory);
+                            PrintPlayerOptions();
+                            break;
                         default:
                             break;
                     }
@@ -148,13 +152,15 @@ namespace ConsoleAdventure
         }
         private void PrintHeader()
         {
-            int playerNameStartPos = Program.SideBuffer.Length - player.Name.Length - 5;
-            int enemyNameStartPos = Program.SideBuffer.Length + bField.TerrainData.GetLength(1) + 5;
+            int playerNameStartPos = Program.SideBuffer.Length - player.Name.Length - 10;
+            int enemyNameStartPos = Program.SideBuffer.Length + bField.TerrainData.GetLength(1) + 10;
             string playerHealth = $"{player.Health} / {player.MaxHealth}";
             string enemyHealth = $"{enemy.Health} / {enemy.MaxHealth}";
-            Console.SetCursorPosition(playerNameStartPos, 7);            
+            Console.SetCursorPosition(playerNameStartPos, 6);            
             Console.Write(player.Name);
-            Console.SetCursorPosition(playerNameStartPos - (playerHealth.Length - player.Name.Length), 8);
+            Console.SetCursorPosition(playerNameStartPos, 7);
+            Console.Write(player.EquippedWeapon.Name);
+            Console.SetCursorPosition(playerNameStartPos, 8);
             Console.Write(playerHealth);
             Console.SetCursorPosition(enemyNameStartPos, 7);
             Console.Write(enemy.Name);
@@ -190,6 +196,9 @@ namespace ConsoleAdventure
                 Console.Write($">  {choice3}");
             }
             else Console.Write($"   {choice3}");
+
+            Console.SetCursorPosition(1, 17);
+            Program.PrintCenterLine("Press 'i' to open your inventory.");
         }
         private void PrintEnemyOptions()
         {
@@ -212,9 +221,9 @@ namespace ConsoleAdventure
                     break;
             }
         }
-        private int CalcDamage(CombatMove move, int aStrength, int dVigor)
+        private int CalcDamage(CombatMove move, int aStrength, int aWeap, int dVigor)
         {
-            double rawDamage = aStrength * move.DamageMod / (dVigor / 2.0);
+            double rawDamage = (aStrength + aWeap) * move.DamageMod / (dVigor / 2.0);
             if (rawDamage < 0) rawDamage = 1;
             int damage = Convert.ToInt32(rawDamage);
             return damage;
@@ -226,7 +235,7 @@ namespace ConsoleAdventure
             Console.SetCursorPosition(Program.SideBuffer.Length / 2, 18);
             if(Program.rand.NextDouble() <= move.AccuracyMod)
             {
-                int damage = CalcDamage(move, enemy.Strength, player.Vigor);
+                int damage = CalcDamage(move, enemy.Strength, 0, player.Vigor);
                 Program.PrintCenterLine($"You take {damage} points of damage.");
                 player.Health -= damage;
             }
@@ -243,7 +252,7 @@ namespace ConsoleAdventure
             Console.SetCursorPosition(Program.SideBuffer.Length / 2, 18);
             if (Program.rand.NextDouble() <= move.AccuracyMod)
             {
-                int damage = CalcDamage(move, player.Strength, enemy.Vigor);
+                int damage = CalcDamage(move, player.Strength, player.EquippedWeapon.CombatPower, enemy.Vigor);
                 Program.PrintCenterLine($"{enemy.Name} takes {damage} points of damage.");
                 enemy.Health -= damage;
             }

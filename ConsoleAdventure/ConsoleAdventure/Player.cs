@@ -13,9 +13,12 @@ namespace ConsoleAdventure
         public Weapon EquippedWeapon;
         public Player(string name, char ico, ConsoleColor col, int hp) : base(name, ico, col, 1, hp, 5,5, null, false)
         {
-            EquippedWeapon = null;
+            EquippedWeapon = null;            
         }
-
+        public void EquipStartingWeapon(Weapon weap)
+        {
+            weap.UseItem();
+        }
         public void SetHealthTo(int _value)
         {
             Health = _value;

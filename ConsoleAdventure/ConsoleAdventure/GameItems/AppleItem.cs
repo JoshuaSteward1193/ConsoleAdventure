@@ -8,14 +8,14 @@ namespace ConsoleAdventure.GameObjects
 {
     class AppleItem : GameItem
     {
-        public AppleItem() : base("Apple", "A fresh apple. Healthy!", 0, true)
+        public AppleItem() : base("Apple", "A fresh apple. Restores health!", 0, true)
         {
         }
 
         public override void UseItem()
         {
-            Console.WriteLine($"You eat the {Name}. You feel better!");
-            Program.p1.Health += 5;
+            Console.WriteLine($"You eat the {Name}. Your health has been restored by 10!");
+            Program.p1.Health += 10;
         }
     }
 }

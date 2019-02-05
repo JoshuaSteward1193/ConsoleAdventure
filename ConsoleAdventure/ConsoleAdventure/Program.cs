@@ -37,9 +37,7 @@ namespace ConsoleAdventure
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
             PlayerArmory = new Inventory();
-            p1.AssignedMoves.Add(GameData.AllCombatMoves[0]);
-            p1.AssignedMoves.Add(GameData.AllCombatMoves[1]);
-            p1.AssignedMoves.Add(GameData.AllCombatMoves[2]);
+            p1.EquipStartingWeapon(new Weapon("Fists", "Just your bare hands", 1, "Fist"));
             //Stopwatch for debug purposes
             sw = new Stopwatch();
 
