@@ -16,10 +16,16 @@ namespace ConsoleAdventure
 		public static bool goodInput;
 		public static bool moveInput;
 
+        //UI VARIABLES
+        public static StringBuilder DialogBoxTopLine = new StringBuilder();
+        public static StringBuilder DialogBoxBottomLine = new StringBuilder();
+        public static int DialogTopPos;
+        public static int DialogBotPos;
+        public static int DialogBoxCurrLine;
+        public static int DialogBoxIndex;
 
-
-		//USER PREFERENCES
-		public static bool PrintColor = true;
+        //USER PREFERENCES
+        public static bool PrintColor = true;
 		public static bool DebugGame = true;
         public static int ConsoleWidth = 91;
         public static int ConsoleHeight = 33;
@@ -32,7 +38,19 @@ namespace ConsoleAdventure
 		{
 			//INITIAL LOAD
 			GameData.DataBuild();
-			currentMap = GameData.AllMaps[2];
+
+            //UI LOAD
+            DialogBoxTopLine.Append(SpecialChars.DoubleLineLeftTop);
+            for (int i = 0; i < 79; i++) DialogBoxTopLine.Append(SpecialChars.DoubleLineAcross);
+            DialogBoxTopLine.Append(SpecialChars.DoubleLineRightTop);
+            DialogBoxBottomLine.Append(SpecialChars.DoubleLineLeftBottom);
+            for (int i = 0; i < 79; i++) DialogBoxBottomLine.Append(SpecialChars.DoubleLineAcross);
+            DialogBoxBottomLine.Append(SpecialChars.DoubleLineRightBottom);
+
+            DialogBoxCurrLine = 0;
+            DialogBoxIndex = 0;
+
+            currentMap = GameData.AllMaps[2];
 			p1 = new Player("Nemo", 'P', ConsoleColor.Cyan, 10);
             p1.SetHealthTo(6);
             PlayerInventory = new Inventory();
@@ -116,6 +134,9 @@ namespace ConsoleAdventure
                 Console.Write(SideBuffer);
                 Console.WriteLine($"Map Draw Time: {DrawTime} ms");
             }
+            PrintDialogBox(7, 23);
+            DialogBoxCurrLine = 24;
+            DialogBoxIndex = 7;
             while (Console.KeyAvailable)
             {
                 Console.ReadKey(false);
@@ -143,6 +164,49 @@ namespace ConsoleAdventure
             }
             Console.Write(line + '\n');
         }
+        public static void PrintDialogBox(int height, int pos)
+        {
+            int position = pos;
+            DialogTopPos = pos;
+            Console.SetCursorPosition(5, position);
+            Console.Write(DialogBoxTopLine);
+            position++;
+            for(int i = 0; i < height; i++)
+            {
+                Console.SetCursorPosition(5, position);
+                Console.Write(SpecialChars.DoubleLineUpDown);
+                Console.SetCursorPosition(85, position);
+                Console.Write(SpecialChars.DoubleLineUpDown);
+                position++;
+            }
+
+            Console.SetCursorPosition(5, position);
+            Console.Write(DialogBoxBottomLine);
+            DialogBotPos = position;
+        }
+
+        public static void WriteToDialogBox(string message)
+        {
+            if (DialogBoxIndex != 7) DialogBoxCurrLine++;
+            string[] words = message.Split(' ');
+            //int index = 7;
+            //int currline = DialogBoxCurrLine;
+            Console.SetCursorPosition(7, DialogBoxCurrLine);
+            for(int i = 0; i < words.Length; i++)
+            {
+                if (words[i].Length + DialogBoxIndex > 83)
+                {
+                    DialogBoxCurrLine++;
+                    Console.SetCursorPosition(7, DialogBoxCurrLine);
+                    DialogBoxIndex = 7;
+                }
+                Console.Write(words[i]);
+                Console.Write(' ');
+                DialogBoxIndex += words[i].Length + 1;
+            }
+            
+        }
+        
 		private static void BadPrint(bool color)
 		{
 			/*
@@ -244,7 +308,7 @@ namespace ConsoleAdventure
 			{
                 if(currentMap.TerrainData[targetY, targetX].Thing != null)
                 {
-                    PrintCenterLine($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
+                    WriteToDialogBox($"This is a {currentMap.TerrainData[targetY, targetX].Thing.Name}. " +
                         $"{currentMap.TerrainData[targetY, targetX].Thing.Description} ");
                     currentMap.TerrainData[targetY, targetX].Thing.Interact();
                     Console.ReadKey(true);
@@ -254,7 +318,7 @@ namespace ConsoleAdventure
                 else if(currentMap.TerrainData[targetY, targetX].Resident != null)
                 {
                     if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(NPC)) {
-                        PrintCenterLine($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
+                        WriteToDialogBox($"This is a human named {currentMap.TerrainData[targetY, targetX].Resident.Name}.");
                     }
                     else //if (currentMap.TerrainData[targetY, targetX].Resident.GetType() == typeof(Enemy))
                     {
@@ -264,8 +328,8 @@ namespace ConsoleAdventure
                 }
                 else
                 {
-                    
-                    PrintCenterLine($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
+
+                    WriteToDialogBox($"You cannot move {failure}. There is a {currentMap.TerrainData[targetY, targetX].Terrain} here.");
                 }
 				
 			}

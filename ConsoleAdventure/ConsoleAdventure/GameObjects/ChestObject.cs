@@ -26,11 +26,13 @@ namespace ConsoleAdventure
             LootChest();
         }
         public void LootChest()
-        {            
-            if (Stash.Items.Count == 0) Program.PrintCenterLine("This chest is empty.");
+        {
+            string message = "";
+            //int number = 0;
+            if (Stash.Items.Count == 0) message += ("This chest is empty.");
             for (int i = 0; i < Stash.Items.Count; i++)
             {
-                Program.PrintCenterLine($"You got a {Stash.Items[i].Name}!");
+                message += ($"You got a {Stash.Items[i].Name}! ");
                 if(Stash.Items[i].GetType() == typeof(Weapon))
                 {
                     Program.PlayerArmory.Items.Add(Stash.Items[i]);
@@ -42,7 +44,7 @@ namespace ConsoleAdventure
                                 
             }
             Stash.Items.Clear();
-            
+            Program.WriteToDialogBox(message);
         }
     }
 }

@@ -36,12 +36,12 @@ namespace ConsoleAdventure
             }
             if (!locked)
             {
-                Program.PrintCenterLine($"You unlock the {Name}.");
+                Program.WriteToDialogBox($"You unlock the {Name}.");
                 DecreaseCharges();
             }
             else
             {
-                Program.PrintCenterLine("You need a key of some kind to open this door.");
+                Program.WriteToDialogBox("You need a key of some kind to open this door.");
             }
         }
     }

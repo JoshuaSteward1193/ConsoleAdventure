@@ -148,7 +148,7 @@ namespace ConsoleAdventure
 
         private void CombatMessage()
         {
-            Program.PrintCenterLine($"Starting combat between the player, {player.Name}, and {enemy.Name} the {enemy.Type}");
+            Program.WriteToDialogBox($"Starting combat between the player, {player.Name}, and {enemy.Name} the {enemy.Type}");
         }
         private void PrintHeader()
         {

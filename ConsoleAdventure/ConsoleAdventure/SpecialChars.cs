@@ -33,5 +33,12 @@ namespace ConsoleAdventure
         public static char Door = '\u05d7';
         public static char Chest = '\u039e';
         public static char Spike = '\u0591';
+        public static char DoubleLineAcross = '\u2550';
+        public static char DoubleLineUpDown = '\u2551';
+        public static char DoubleLineLeftTop = '\u2554';
+        public static char DoubleLineRightTop = '\u2557';
+        public static char DoubleLineLeftBottom = '\u255A';
+        public static char DoubleLineRightBottom = '\u255D';
+
     }
 }
