@@ -11,6 +11,8 @@ namespace ConsoleAdventure
         public List<DoorKey> KeyRing = new List<DoorKey>();
         public List<CombatMove> AssignedMoves = new List<CombatMove>();
         public Weapon EquippedWeapon;
+
+        public int XP { get; set; }
         public Player(string name, char ico, ConsoleColor col, int hp) : base(name, ico, col, 1, hp, 5,5, null, false)
         {
             EquippedWeapon = null;            

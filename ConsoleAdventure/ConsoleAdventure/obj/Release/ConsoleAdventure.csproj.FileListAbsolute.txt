@@ -1,0 +1,13 @@
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe.config
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.application
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.pdb
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.csprojAssemblyReference.cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.Properties.Resources.resources
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.csproj.GenerateResource.cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.csproj.CoreCompileInputs.cache
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.exe.manifest
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.application
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.exe
+C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.pdb

@@ -163,6 +163,7 @@ namespace ConsoleAdventure
                 Console.SetCursorPosition((ConsoleWidth - length) / 2, Console.CursorTop);               
             }
             Console.Write(line + '\n');
+            //TODO: Needs an else and accompanying logic
         }
         public static void PrintDialogBox(int height, int pos)
         {

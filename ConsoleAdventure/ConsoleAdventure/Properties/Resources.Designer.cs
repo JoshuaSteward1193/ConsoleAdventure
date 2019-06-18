@@ -61,15 +61,13 @@ namespace ConsoleAdventure.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ///@############################@
-        ///@############################@
-        ///@++++++++++++++++++++++++++++@
-        ///@++++++++++++++++++++++++++++@
-        ///@++++++++++++++++++++++++++++@
-        ///@############################@
-        ///@############################@
-        ///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
+        ///   Looks up a localized string similar to @@@@@@@@@@@@@
+        ///@           @
+        ///@           @
+        ///@           @
+        ///@           @
+        ///@           @
+        ///@@@@@@@@@@@@@.
         /// </summary>
         internal static string Battlefield1 {
             get {
@@ -111,15 +109,28 @@ namespace ConsoleAdventure.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ///@########################################################################################################@
-        ///@########################################################################################################@
-        ///@########################################################################################################@
-        ///@##############+++++############################################################ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ///@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        ///@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        ///@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@
+        ///@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StoryRoom1 {
             get {
                 return ResourceManager.GetString("StoryRoom1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF/.\FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF/...\FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF@
+        ///@FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF/.....\FFFF [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StoryRoom2 {
+            get {
+                return ResourceManager.GetString("StoryRoom2", resourceCulture);
             }
         }
         

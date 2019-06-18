@@ -145,5 +145,8 @@
   <ItemGroup>
     <None Include="Resources\Battlefield1.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StoryRoom2.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
