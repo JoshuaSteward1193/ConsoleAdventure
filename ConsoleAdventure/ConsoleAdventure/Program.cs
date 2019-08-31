@@ -80,6 +80,7 @@ namespace ConsoleAdventure
             Console.Clear();
 
             //PLAYER SET UP
+            PrintCenterLine("~~CHARACTER CREATION~~");
             PrintCenterLine("Firstly, what name would you like your character to have?");
             Console.CursorVisible = true;
             p1.Name = Console.ReadLine();

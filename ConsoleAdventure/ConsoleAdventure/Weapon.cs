@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 
 namespace ConsoleAdventure
 {
@@ -25,6 +22,7 @@ namespace ConsoleAdventure
             {
                 Program.p1.AssignedMoves.Add(x);
             }
+            Program.PrintCenterLine($"You equipped a {this.Name}");
         }
         public void EnemyEquip()
         {
@@ -41,7 +39,7 @@ namespace ConsoleAdventure
                     Moves.Add(new CombatMove("Jab", "deliver a quick punch to", "delivers a quick punch to", 0.8, 0.99, CombatMove.SkillType.Fist));
                     break;
                 case "Short Sword":
-                    Moves.Add(new CombatMove("Stab", "hold the blade pointing outwards and waist height and charge towards ", "levels the blade at you and charges towards ", 1.3, 0.85, CombatMove.SkillType.Shortsword));
+                    Moves.Add(new CombatMove("Stab", "hold the blade pointing outwards at waist height and charge towards ", "levels the blade at you and charges towards ", 1.3, 0.85, CombatMove.SkillType.Shortsword));
                     Moves.Add(new CombatMove("Slice", "swing quickly with the blade towards ", "swings its blade towards ", 1.0, 0.9, CombatMove.SkillType.Shortsword));
                     Moves.Add(new CombatMove("Cleave", "raise the blade high over your head, and bring it swiftly down on ", "raises the blade high in the air, and swings downwards towards ", 1.4, 0.8, CombatMove.SkillType.Shortsword));
                     break;
