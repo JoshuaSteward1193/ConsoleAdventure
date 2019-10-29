@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joshua\\Documents\\GitHub\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj": {}
+    "D:\\GitRepos\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joshua\\Documents\\GitHub\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj": {
+    "D:\\GitRepos\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joshua\\Documents\\GitHub\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj",
+        "projectUniqueName": "D:\\GitRepos\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj",
         "projectName": "ConsoleAdventure2",
-        "projectPath": "C:\\Users\\Joshua\\Documents\\GitHub\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj",
-        "packagesPath": "C:\\Users\\Joshua\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joshua\\Documents\\GitHub\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\obj\\",
+        "projectPath": "D:\\GitRepos\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\ConsoleAdventure2.csproj",
+        "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
+        "outputPath": "D:\\GitRepos\\ConsoleAdventure\\ConsoleAdventure\\ConsoleAdventure2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joshua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joshu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -44,16 +43,23 @@
         "netcoreapp2.1": {
           "dependencies": {
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -11,3 +11,15 @@ C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdvent
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.application
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.exe
 C:\Users\Joshua\Documents\GitHub\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.pdb
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.csprojAssemblyReference.cache
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.Properties.Resources.resources
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.csproj.GenerateResource.cache
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.exe
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.pdb
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe.config
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe.manifest
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.application
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.exe
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\bin\Release\ConsoleAdventure.pdb
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.exe.manifest
+D:\GitRepos\ConsoleAdventure\ConsoleAdventure\ConsoleAdventure\obj\Release\ConsoleAdventure.application
