@@ -10,7 +10,7 @@ namespace ConsoleAdventure
         public bool Roams { get; set; }
 
         //COMBAT STATS
-        //
+        
         public int Level { get; set; }
         private int health;
         public int Health
