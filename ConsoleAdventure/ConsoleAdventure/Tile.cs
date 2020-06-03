@@ -138,7 +138,7 @@ namespace ConsoleAdventure
                     Passable = false;
                     break;
                 case ',':
-                    int grass = Program.rand.Next(0, 7);
+                    int grass = Program.rand.Next(0, 9);
                     switch (grass)
                     {
                         case 0:
@@ -161,6 +161,12 @@ namespace ConsoleAdventure
                             break;
                         case 6:
                             Icon = SpecialChars.Grass7;
+                            break;
+                        case 7:
+                            Icon = ' ';
+                            break;
+                        case 8:
+                            Icon = ' ';
                             break;
                     }
                     Terrain = "Grassy Plains";

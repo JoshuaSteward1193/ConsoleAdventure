@@ -8,7 +8,7 @@ namespace ConsoleAdventure
 {
     class GoblinEnemy : Enemy
     {
-        public GoblinEnemy(string name, int level, Map map, bool roam = true) : base(name,4, 10, "Goblin", 'g', ConsoleColor.Yellow, level, 0, 5, 0, 0, map, roam)
+        public GoblinEnemy(string name, int level, Map map, bool roam = true) : base(name,4, 10, "Goblin", 'g', ConsoleColor.Red, level, 0, 5, 0, 0, map, roam)
         {
             StandardMove1 = GameData.AllCombatMoves[1];
             StandardMove2 = null;
@@ -16,7 +16,7 @@ namespace ConsoleAdventure
             SupportMove1 = null;            
             LevelScaler(level);
         }
-        public GoblinEnemy(string name, int level, Map map, GameItem specialLoot, bool roam = true) : base(name, 4, 10, "Goblin", 'g', ConsoleColor.Yellow, level, 0, 5, 0, 0, map, roam)
+        public GoblinEnemy(string name, int level, Map map, GameItem specialLoot, bool roam = true) : base(name, 4, 10, "Goblin", 'g', ConsoleColor.Red, level, 0, 5, 0, 0, map, roam)
         {
             StandardMove1 = GameData.AllCombatMoves[1];
             StandardMove2 = null;
